@@ -10,7 +10,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	private int ID;
 	private book B;
 	private member M;
-	private Date D;
+	private Date date; // Changed the instance of Date
 	private LOAN_STATE state;
 
 	
@@ -18,14 +18,14 @@ public class Loan implements Serializable { // Changed class name to uppercase
 		this.ID = loanId;
 		this.B = book;
 		this.M = member;
-		this.D = dueDate;
+		this.date = dueDate;
 		this.state = LOAN_STATE.CURRENT;
 	}
 
 	
 	public void checkOverDue() {
 		if (state == LOAN_STATE.CURRENT &&
-			Calendar.INSTANCE().Date().after(D)) {
+			Calendar.INSTANCE().Date().after(date)) {
 			this.state = LOAN_STATE.OVER_DUE;			
 		}
 	}
@@ -42,7 +42,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 
 
 	public Date Get_Due_Date() {
-		return D;
+		return date;
 	}
 	
 	
@@ -55,7 +55,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
 		  .append("  Book ").append(B.ID()).append(" : " )
 		  .append(B.TITLE()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
+		  .append("  DueDate: ").append(sdf.format(date)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
 	}
