@@ -8,7 +8,7 @@ public class Calendar {
 	
 	
 	private Calendar() {
-		CaLeNdAr = java.util.Calendar.getInstance();
+		calendar = java.util.Calendar.getInstance(); //Changed the instance name
 	}
 	
 	public static Calendar INSTANCE() {
@@ -19,16 +19,16 @@ public class Calendar {
 	}
 	
 	public void incrementDate(int days) {
-		CaLeNdAr.add(java.util.Calendar.DATE, days);		
+		calendar.add(java.util.Calendar.DATE, days); //Changed the instance name		
 	}
 	
 	public synchronized void Set_dATE(Date date) {
 		try {
-			CaLeNdAr.setTime(date);
-	        CaLeNdAr.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MINUTE, 0);  
-	        CaLeNdAr.set(java.util.Calendar.SECOND, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MILLISECOND, 0);
+			calendar.setTime(date); //Changed the instance name
+	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  //Changed the instance name
+	        calendar.set(java.util.Calendar.MINUTE, 0);  //Changed the instance name
+	        calendar.set(java.util.Calendar.SECOND, 0);  //Changed the instance name
+	        calendar.set(java.util.Calendar.MILLISECOND, 0); //Changed the instance name
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -36,11 +36,11 @@ public class Calendar {
 	}
 	public synchronized Date Date() {
 		try {
-	        CaLeNdAr.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MINUTE, 0);  
-	        CaLeNdAr.set(java.util.Calendar.SECOND, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MILLISECOND, 0);
-			return CaLeNdAr.getTime();
+	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  //Changed the instance name
+	        calendar.set(java.util.Calendar.MINUTE, 0);  //Changed the instance name
+	        calendar.set(java.util.Calendar.SECOND, 0);  //Changed the instance name
+	        calendar.set(java.util.Calendar.MILLISECOND, 0); //Changed the instance name
+			return calendar.getTime(); //Changed the instance name
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -49,9 +49,9 @@ public class Calendar {
 
 	public synchronized Date Due_Date(int loanPeriod) {
 		Date NoW = Date();
-		CaLeNdAr.add(java.util.Calendar.DATE, loanPeriod);
-		Date DuEdAtE = CaLeNdAr.getTime();
-		CaLeNdAr.setTime(NoW);
+		 calendar.add(java.util.Calendar.DATE, loanPeriod); //Changed the instance name
+		Date DuEdAtE =  calendar.getTime(); //Changed the instance name
+		 calendar.setTime(NoW); //Changed the instance name
 		return DuEdAtE;
 	}
 	
