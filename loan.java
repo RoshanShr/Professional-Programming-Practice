@@ -8,15 +8,15 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED }; // Changed enum name to LoanState
 	
 	private int loanId; // Changed variable name to loanId
-	private book B;
+	private Book book; // Change class and instance
 	private member M;
 	private Date date; // Changed the instance of Date
 	private LoanState state;
 
 	
-	public Loan(int loanId, book book, member member, Date dueDate) { // Changed constructor name to Uppercase
+	public Loan(int loanId, Book book, member member, Date dueDate) { // Changed constructor name to Uppercase
 		this.loanId = loanId;
-		this.B = book;
+		this.book = book;
 		this.M = member;
 		this.date = dueDate;
 		this.state = LoanState.CURRENT;
