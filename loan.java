@@ -7,7 +7,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	
 	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
 	
-	private int ID;
+	private int loanId; // Changed variable name to loanId
 	private book B;
 	private member M;
 	private Date date; // Changed the instance of Date
@@ -15,7 +15,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 
 	
 	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
+		this.loanId = loanId;
 		this.B = book;
 		this.M = member;
 		this.date = dueDate;
