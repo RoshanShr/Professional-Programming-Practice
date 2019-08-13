@@ -38,7 +38,7 @@ public class member implements Serializable {
 		  .append(String.format("  Fines Owed :  $%.2f", FINES))
 		  .append("\n");
 		
-		for (loan LoAn : LNS.values()) {
+		for (loan Loan : LNS.values()) {  //Change Loan variable to correct order
 			sb.append(LoAn).append("\n");
 		}		  
 		return sb.toString();
@@ -105,9 +105,9 @@ public class member implements Serializable {
 	}
 
 
-	public void dIsChArGeLoAn(loan LoAn) {
-		if (LNS.containsKey(LoAn.ID())) {
-			LNS.remove(LoAn.ID());
+	public void dIsChArGeLoAn(loan Loan) {
+		if (LNS.containsKey(Loan.ID())) {
+			LNS.remove(Loan.ID());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
