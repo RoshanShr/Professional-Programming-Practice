@@ -36,8 +36,8 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	}
 
 	
-	public Integer ID() {
-		return ID;
+	public Integer getLoanId() { // Changed method name to getLoanId 
+		return loanId;
 	}
 
 
@@ -53,7 +53,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 		sb.append("Loan:  ").append(ID).append("\n")
 		  .append("  Borrower ").append(M.GeT_ID()).append(" : ")
 		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
+		  .append("  Book ").append(B.getLoanId()).append(" : " )
 		  .append(B.TITLE()).append("\n")
 		  .append("  DueDate: ").append(sdf.format(date)).append("\n")
 		  .append("  State: ").append(state);		
