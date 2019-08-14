@@ -22,7 +22,7 @@ public class Calendar {
 		calendar.add(java.util.Calendar.DATE, days); //Changed the instance name		
 	}
 	
-	public synchronized void Set_dATE(Date date) {
+	public synchronized void setDate(Date date) { //Changing the method name to meaningful verb phrase
 		try {
 			calendar.setTime(date); //Changed the instance name
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  //Changed the instance name
