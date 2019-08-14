@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class member implements Serializable {
+public class Member implements Serializable {	//Capitalized the first letter of the class name
 
 	private String LN;
 	private String FN;
@@ -17,7 +17,7 @@ public class member implements Serializable {
 	private Map<Integer, loan> LNS;
 
 	
-	public member(String lastName, String firstName, String email, int phoneNo, int id) {
+	public Member(String lastName, String firstName, String email, int phoneNo, int id) {	//Capitalized the first letter of the constructor
 		this.LN = lastName;
 		this.FN = firstName;
 		this.EM = email;
@@ -39,7 +39,7 @@ public class member implements Serializable {
 		  .append("\n");
 		
 		for (loan Loan : LNS.values()) {  //Changed Loan variable to correct order
-			sb.append(LoAn).append("\n");
+			sb.append(Loan).append("\n");
 		}		  
 		return sb.toString();
 	}
@@ -89,7 +89,7 @@ public class member implements Serializable {
 		fines += fine;
 	}
 	
-	public double payFine(double amount) {	// changed the fines and amount variable to correct order
+	public double payFine(double amount) {	//Changed the fines and amount variable to correct order
 		if (amount < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
