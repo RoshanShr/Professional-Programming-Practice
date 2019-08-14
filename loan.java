@@ -8,8 +8,8 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED }; // Changed enum name to LoanState
 	
 	private int loanId; // Changed variable name to loanId
-	private Book book; // Change class and instance
-	private member M;
+	private Book book; // Change class and instance of Book class
+	private Member member; // Change class and instance of Member class
 	private Date date; // Changed the instance of Date
 	private LoanState state;
 
@@ -17,7 +17,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	public Loan(int loanId, Book book, member member, Date dueDate) { // Changed constructor name to Uppercase
 		this.loanId = loanId;
 		this.book = book;
-		this.M = member;
+		this.member = member;
 		this.date = dueDate;
 		this.state = LoanState.CURRENT;
 	}
@@ -51,8 +51,8 @@ public class Loan implements Serializable { // Changed class name to uppercase
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.GeT_ID()).append(" : ")
-		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
+		  .append("  Borrower ").append(member.GeT_ID()).append(" : ")
+		  .append(member.Get_LastName()).append(", ").append(member.Get_FirstName()).append("\n")
 		  .append("  Book ").append(B.getLoanId()).append(" : " )
 		  .append(B.TITLE()).append("\n")
 		  .append("  DueDate: ").append(sdf.format(date)).append("\n")
