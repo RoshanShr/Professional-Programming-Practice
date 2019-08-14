@@ -38,34 +38,34 @@ public class member implements Serializable {
 		  .append(String.format("  Fines Owed :  $%.2f", FINES))
 		  .append("\n");
 		
-		for (loan Loan : LNS.values()) {  //Change Loan variable to correct order
+		for (loan Loan : LNS.values()) {  //Changed Loan variable to correct order
 			sb.append(LoAn).append("\n");
 		}		  
 		return sb.toString();
 	}
 
 	
-	public int GeT_ID() {
+	public int getId() {	//Changed the method name to correct order
 		return ID;
 	}
 
 	
-	public List<loan> GeT_LoAnS() {
+	public List<loan> getLoans() {	//Changed the method name to correct order
 		return new ArrayList<loan>(LNS.values());
 	}
 
 	
-	public int Number_Of_Current_Loans() {
+	public int numberOfCurrentLoans() {	//Changed the method name to correct order
 		return LNS.size();
 	}
 
 	
-	public double Fines_OwEd() {
+	public double finesOwed() {	//Changed the method name to correct order
 		return FINES;
 	}
 
 	
-	public void Take_Out_Loan(loan loan) {
+	public void takeOutLoan(loan loan) {	//Changed the method name to correct order
 		if (!LNS.containsKey(loan.ID())) {
 			LNS.put(loan.ID(), loan);
 		}
@@ -75,17 +75,17 @@ public class member implements Serializable {
 	}
 
 	
-	public String Get_LastName() {
+	public String getLastName() {	//Changed the method name to correct order
 		return LN;
 	}
 
 	
-	public String Get_FirstName() {
+	public String getFirstName() {	//Changed the method name to correct order
 		return FN;
 	}
 
 
-	public void Add_Fine(double fine) {
+	public void addFine(double fine) {  //Changed the method name to correct order
 		FINES += fine;
 	}
 	
@@ -105,7 +105,7 @@ public class member implements Serializable {
 	}
 
 
-	public void dIsChArGeLoAn(loan Loan) {
+	public void disChargeLoan(loan Loan) {   //Changed the method name to correct order
 		if (LNS.containsKey(Loan.ID())) {
 			LNS.remove(Loan.ID());
 		}
