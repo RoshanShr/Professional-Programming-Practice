@@ -61,13 +61,13 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	}
 
 
-	public member Member() {
-		return M;
+	public member getMember() { // Get getMember from the Member Class
+		return member;
 	}
 
 
-	public book Book() {
-		return B;
+	public book getBook() { // Get getBook from the Book Class
+		return book;
 	}
 
 
