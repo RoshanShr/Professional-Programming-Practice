@@ -26,7 +26,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 			
 		this.BorrowBookUI = borrowbookui;
-		borrowbookui.Set_state(BorrowBookUI.UI_state.READY);
+		borrowbookui.Set_state(BorrowBookUI.UIState.READY);
 		state = ControlState.READY;		
 	}
 
@@ -42,12 +42,12 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 		}
 		if (library.MEMBER_CAN_BORROW(member)) {
 			PENDING = new ArrayList<>();
-			borrowbookui.Set_state(BorrowBookUI.UI_state.SCANNING);
+			borrowbookui.Set_state(BorrowBookUI.UIState.SCANNING);
 			state = ControlState.SCANNING; }
 		else 
 		{
 			borrowbookui.Display("Member cannot borrow at this time");
-			borrowbookui.Set_state(BorrowBookUI.UI_state.RESTRICTED); }}
+			borrowbookui.Set_state(BorrowBookUI.UIState.RESTRICTED); }}
 	
 	
 	public void scanned(int bookId) { //Modified function to scanned
@@ -85,7 +85,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 				borrowbookui.Display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			borrowbookui.Set_state(BorrowBookUI.UI_state.FINALISING);
+			borrowbookui.Set_state(BorrowBookUI.UIState.FINALISING);
 			state = ControlState.FINALISING;
 		}
 	}
@@ -103,13 +103,13 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 		for (loan LOAN : COMPLETED) {
 			borrowbookui.Display(LOAN.toString());
 		}
-		borrowbookui.Set_state(BorrowBookUI.UI_state.COMPLETED);
+		borrowbookui.Set_state(BorrowBookUI.UIState.COMPLETED);
 		state = ControlState.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		borrowbookui.Set_state(BorrowBookUI.UI_state.CANCELLED);
+		borrowbookui.Set_state(BorrowBookUI.UIState.CANCELLED);
 		state = ControlState.CANCELLED;
 	}
 	
