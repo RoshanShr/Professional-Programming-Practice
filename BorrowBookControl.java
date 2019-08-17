@@ -37,7 +37,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			
 		member = library.Member(memberId);
 		if (member == null) {
-			borrowbookui.Display("Invalid memberId");
+			borrowbookui.display("Invalid memberId");
 			return;
 		}
 		if (library.MEMBER_CAN_BORROW(member)) {
@@ -46,7 +46,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			state = ControlState.SCANNING; }
 		else 
 		{
-			borrowbookui.Display("Member cannot borrow at this time");
+			borrowbookui.display("Member cannot borrow at this time");
 			borrowbookui.Set_state(BorrowBookUI.UIState.RESTRICTED); }}
 	
 	
@@ -57,19 +57,19 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 		}	
 		book = library.book(bookId);
 		if (book == null) {
-			borrowbookui.Display("Invalid bookId");
+			borrowbookui.display("Invalid bookId");
 			return;
 		}
-		if (!book.AVAILABLE()) {
-			borrowbookui.Display("book cannot be borrowed");
+		if (!book.available()) {
+			borrowbookui.display("book cannot be borrowed");
 			return;
 		}
 		PENDING.add(book);
 		for (Book book : PENDING) {
-			borrowbookui.Display(B.toString());
+			borrowbookui.display(B.toString());
 		}
 		if (library.Loans_Remaining_For_Member(member) - PENDING.size() == 0) {
-			borrowbookui.Display("Loan limit reached");
+			borrowbookui.display("Loan limit reached");
 			Complete();
 		}
 	}
@@ -80,9 +80,9 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			cancel();
 		}
 		else {
-			borrowbookui.Display("\nFinal Borrowing List");
+			borrowbookui.display("\nFinal Borrowing List");
 			for (Book book : PENDING) {
-				borrowbookui.Display(B.toString());
+				borrowbookui.display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
 			borrowbookui.Set_state(BorrowBookUI.UIState.FINALISING);
@@ -99,9 +99,9 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			loan LOAN = library.ISSUE_LAON(B, member);
 			COMPLETED.add(LOAN);			
 		}
-		borrowbookui.Display("Completed Loan Slip");
+		borrowbookui.display("Completed Loan Slip");
 		for (loan LOAN : COMPLETED) {
-			borrowbookui.Display(LOAN.toString());
+			borrowbookui.display(LOAN.toString());
 		}
 		borrowbookui.Set_state(BorrowBookUI.UIState.COMPLETED);
 		state = ControlState.COMPLETED;
