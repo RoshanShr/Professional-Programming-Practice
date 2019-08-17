@@ -31,11 +31,11 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 	}
 
 		
-	public void swiped(int MEMMER_ID) { //Modified function to swiped
+	public void swiped(int memberId) { //Modified function to swiped
 		if (!state.equals(ControlState.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		member = library.MEMBER(MEMMER_ID);
+		member = library.Member(memberId);
 		if (member == null) {
 			borrowbookui.Display("Invalid memberId");
 			return;
@@ -65,7 +65,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			return;
 		}
 		PENDING.add(book);
-		for (book B : PENDING) {
+		for (Book book : PENDING) {
 			borrowbookui.Display(B.toString());
 		}
 		if (library.Loans_Remaining_For_Member(member) - PENDING.size() == 0) {
@@ -81,7 +81,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 		}
 		else {
 			borrowbookui.Display("\nFinal Borrowing List");
-			for (book B : PENDING) {
+			for (Book book : PENDING) {
 				borrowbookui.Display(B.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
@@ -91,11 +91,11 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 	}
 
 
-	public void Commit_LOans() {
+	public void commitLoans() { //Modified function to commitLoans
 		if (!state.equals(ControlState.FINALISING)) {
 			throw new RuntimeException("BorrowbookControl: cannot call commitLoans except in FINALISING state");
 		}	
-		for (book B : PENDING) {
+		for (Book book : PENDING) {
 			loan LOAN = library.ISSUE_LAON(B, member);
 			COMPLETED.add(LOAN);			
 		}
