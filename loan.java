@@ -53,8 +53,8 @@ public class Loan implements Serializable { // Changed class name to uppercase
 		sb.append("Loan:").append(ID).append("\n")
 		  .append("Borrower").append(member.GeT_ID()).append(" : ")
 		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")
-		  .append("Book").append(B.getLoanId()).append(" : " )
-		  .append(B.TITLE()).append("\n")
+		  .append("Book").append(book.getLoanId()).append(" : " )
+		  .append(book.getTitle()).append("\n")
 		  .append("DueDate: ").append(sdf.format(date)).append("\n")
 		  .append("State: ").append(state);		
 		return sb.toString();
