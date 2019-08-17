@@ -50,7 +50,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			borrowbookui.Set_state(BorrowBookUI.UI_state.RESTRICTED); }}
 	
 	
-	public void Scanned(int bookId) {
+	public void scanned(int bookId) { //Modified function to scanned
 		book = null;
 		if (!state.equals(ControlState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
@@ -75,7 +75,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 	}
 	
 	
-	public void Complete() {
+	public void complete() { //Modified function to complete
 		if (PENDING.size() == 0) {
 			cancel();
 		}
