@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class BorrowbookControl {
+public class BorrowBookControl { // Changes class name to BorrowBookControl
 	
 	private BorrowbookUI UI;
 	
@@ -15,7 +15,7 @@ public class BorrowbookControl {
 	private Book book; //Created instance of Book Class
 	
 	
-	public BorrowbookControl() {
+	public BorrowBookControl() {
 		this.library = library.INSTANCE();
 		state = ControlState.INITIALISED;
 	}
@@ -23,7 +23,7 @@ public class BorrowbookControl {
 
 	public void setUI(BorrowbookUI ui) {
 		if (!state.equals(ControlState.INITIALISED)) 
-			throw new RuntimeException("BorrowbookControl: cannot call setUI except in INITIALISED state");
+			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 			
 		this.UI = ui;
 		ui.Set_state(BorrowbookUI.UI_state.READY);
@@ -33,7 +33,7 @@ public class BorrowbookControl {
 		
 	public void Swiped(int MEMMER_ID) {
 		if (!state.equals(ControlState.READY)) 
-			throw new RuntimeException("BorrowbookControl: cannot call cardSwiped except in READY state");
+			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
 		member = library.MEMBER(MEMMER_ID);
 		if (member == null) {
@@ -53,7 +53,7 @@ public class BorrowbookControl {
 	public void Scanned(int bookId) {
 		book = null;
 		if (!state.equals(ControlState.SCANNING)) {
-			throw new RuntimeException("BorrowbookControl: cannot call bookScanned except in SCANNING state");
+			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
 		book = library.book(bookId);
 		if (book == null) {
