@@ -24,10 +24,10 @@ public class Library implements Serializable { //Class name must start with capi
 	private static final double DAMAGE_FREE = 2.0; //Constants must be all upper case and underscore separated
 	
 	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private int bookId; //Variable name must start with lower case and be in camelBack.
+	private int memberId; //Variable name must start with lower case and be in camelBack.
+	private int loanId; //Variable name must start with lower case and be in camelBack.
+	private Date loanDate; //Variable name must start with lower case and be in camelBack.
 	
 	private Map<Integer, book> CATALOG;
 	private Map<Integer, member> MEMBERS;
