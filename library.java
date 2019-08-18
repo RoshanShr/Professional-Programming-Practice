@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class library implements Serializable {
+public class Library implements Serializable { //Class name must start with capital letter
 	
 	private static final String libraryFile = "library.obj";
 	private static final int loanLimit = 2;
