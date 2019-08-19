@@ -134,16 +134,16 @@ public class Main {
 
 
 
-	private static void BOOKS() {
+	private static void books() { //method name must start with lower case
 		output("");
-		for (book book : LIB.BOOKS()) {
+		for (book book : LIB.books()) {
 			output(book + "\n");
 		}		
 	}
 
 
 
-	private static void MEMBERS() {
+	private static void members() { //method name must start with lower case
 		output("");
 		for (member member : LIB.MEMBERS()) {
 			output(member + "\n");
@@ -152,22 +152,22 @@ public class Main {
 
 
 
-	private static void BORROW_BOOK() {
+	private static void borrowBook() { //method name must start with lowercase and be in camelBack
 		new BorrowBookUI(new BorrowBookControl()).run();		
 	}
 
 
-	private static void RETURN_BOOK() {
+	private static void returnBook() { //method name must start with lowercase and be in camelBack
 		new ReturnBookUI(new ReturnBookControl()).RuN();		
 	}
 
 
-	private static void FIX_BOOKS() {
+	private static void fixBooks() { //method name must start with lowercase and be in camelBack
 		new FixBookUI(new FixBookControl()).RuN();		
 	}
 
 
-	private static void INCREMENT_DATE() {
+	private static void incrementDate() { //method name must start with lowercase and be in camelBack
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			CAL.incrementDate(days);
@@ -180,7 +180,7 @@ public class Main {
 	}
 
 
-	private static void ADD_BOOK() {
+	private static void addBook() { //method name must start with lowercase and be in camelBack
 		
 		String A = input("Enter author: ");
 		String T  = input("Enter title: ");
@@ -191,7 +191,7 @@ public class Main {
 	}
 
 	
-	private static void ADD_MEMBER() {
+	private static void addMember() { //method name must start with lowercase and be in camelBack
 		try {
 			String LN = input("Enter last name: ");
 			String FN  = input("Enter first name: ");
