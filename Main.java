@@ -125,7 +125,7 @@ public class Main {
 	}
 
 
-	private static void CURRENT_LOANS() {
+	private static void currentLoans() { //method name must start with lowercase and be in camelBack
 		output("");
 		for (loan loan : LIB.CurrentLoans()) {
 			output(loan + "\n");
