@@ -9,8 +9,8 @@ public class ReturnBookControl {
 	
 
 	public ReturnBookControl() {
-		this.lIbRaRy = lIbRaRy.INSTANCE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE(); //Variable name should start with lowercase and be in camelBack
+		state = CONTROL_STATE.INITIALISED; //Variable name should start with lowercase and be in camelBack
 	}
 	
 	
