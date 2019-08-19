@@ -120,7 +120,7 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void FINES() {
+		private static void fines() { //method name must start with lower case
 		new PayFineUI(new PayFineControl()).RuN();		
 	}
 
