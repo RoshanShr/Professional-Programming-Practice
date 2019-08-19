@@ -4,8 +4,8 @@ public class ReturnBookControl {
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
 	private CONTROL_STATE sTaTe;
 	
-	private library lIbRaRy;
-	private loan CurrENT_loan;
+	private Library library; //Class name should start with uppercase and variable name should start with lowercase and be in camelBack
+	private Loan currentLoan; //Class name should start with uppercase and variable name should start with lowercase and be in camelBack
 	
 
 	public ReturnBookControl() {
