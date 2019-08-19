@@ -5,7 +5,7 @@ public class FixBookControl {
 	private Controlstate state;  // Changed instance to state
 	
 	private Library library; //Created instance of Library class 
-	private book Cur_Book;
+	private Book book; //Created instance of Book class 
 
 
 	public FixBookControl() {
@@ -28,17 +28,17 @@ public class FixBookControl {
 		if (!state.equals(Controlstate.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		Cur_Book = library.Book(bookId);
+		book = library.Book(bookId);
 		
-		if (Cur_Book == null) {
+		if (book == null) {
 			UI.display("Invalid bookId");
 			return;
 		}
-		if (!Cur_Book.IS_Damaged()) {
+		if (!book.IS_Damaged()) {
 			UI.display("Book has not been damaged");
 			return;
 		}
-		UI.display(Cur_Book.toString());
+		UI.display(book.toString());
 		UI.Set_state(FixBookUI.UI_state.FIXING);
 		state = Controlstate.FIXING;		
 	}
@@ -49,9 +49,9 @@ public class FixBookControl {
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
 		if (MUST_fix) {
-			library.Repair_BOOK(Cur_Book);
+			library.Repair_BOOK(book);
 		}
-		Cur_Book = null;
+		book = null;
 		UI.Set_state(FixBookUI.UI_state.READY);
 		state = Controlstate.READY;		
 	}
