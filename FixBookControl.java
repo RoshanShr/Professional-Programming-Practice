@@ -1,6 +1,6 @@
 public class FixBookControl {
 	
-	private FixBookUI borrowbookui;
+	private FixBookUI borrowbookui; // Changed instance to borrowbookui
 	private enum Controlstate { INITIALISED, READY, FIXING }; // Changed enum name to Controlstate
 	private Controlstate state;  // Changed instance to state
 	
@@ -24,7 +24,7 @@ public class FixBookControl {
 	}
 
 
-	public void Book_scanned(int bookId) {
+	public void bookScanned(int bookId) { //Method changes to bookScanned
 		if (!state.equals(Controlstate.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
