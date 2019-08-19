@@ -1,7 +1,7 @@
 public class ReturnBookControl {
 
 	private ReturnBookUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
+	private enum ControlState { INITIALISED, READY, INSPECTING }; //enum name should start with uppercase and be in CamelBack
 	private CONTROL_STATE sTaTe;
 	
 	private Library library; //Class name should start with uppercase and variable name should start with lowercase and be in camelBack
