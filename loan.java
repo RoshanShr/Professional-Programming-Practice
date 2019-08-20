@@ -25,7 +25,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	
 	public void checkOverDue() {
 	    if (state == LoanState.CURRENT &&
-			Calendar.INSTANCE().Date().after(date)) {
+			Calendar.getInstance().getDate().after(date)) { // Changed method to getInstance and getDate
 			this.state = LoanState.overDue;			
 		}
 	}
@@ -61,12 +61,12 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	}
 
 
-	public member getMember() { // Get getMember from the Member Class
+	public Member getMember() { // Get getMember from the Member Class
 		return member;
 	}
 
 
-	public book getBook() { // Get getBook from the Book Class
+	public Book getBook() { // Get getBook from the Book Class
 		return book;
 	}
 
