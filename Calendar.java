@@ -34,7 +34,7 @@ public class Calendar {
 			throw new RuntimeException(e);
 		}	
 	}
-	public synchronized Date Date() {
+	public synchronized Date date() { //Changing the method name to meaningful verb phrase
 		try {
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  //Changed the instance name
 	        calendar.set(java.util.Calendar.MINUTE, 0);  //Changed the instance name
@@ -47,7 +47,7 @@ public class Calendar {
 		}	
 	}
 
-	public synchronized Date Due_Date(int loanPeriod) {
+	public synchronized Date dueDate(int loanPeriod) { //Changing the method name to meaningful verb phrase
 		Date NoW = Date();
 		 calendar.add(java.util.Calendar.DATE, loanPeriod); //Changed the instance name
 		Date DuEdAtE =  calendar.getTime(); //Changed the instance name
@@ -55,7 +55,7 @@ public class Calendar {
 		return DuEdAtE;
 	}
 	
-	public synchronized long Get_Days_Difference(Date targetDate) {
+	public synchronized long getDaysDifference(Date targetDate) { //Changing the method name to meaningful verb phrase
 		
 		long Diff_Millis = Date().getTime() - targetDate.getTime();
 	    long Diff_Days = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS);
