@@ -3,17 +3,17 @@ import java.util.Scanner;
 
 public class BorrowBookUI {
 	
-	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
+	public static enum UiState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED }; //Fixed enum name order
 
 	private BorrowBookControl CONTROL;
 	private Scanner input;
-	private UI_STATE StaTe;
+	private UiState state;	//Changed the variable names to correct order
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
 		this.CONTROL = control;
 		input = new Scanner(System.in);
-		StaTe = UI_STATE.INITIALISED;
+		state = UiState.INITIALISED;
 		control.setUI(this);
 	}
 
@@ -29,8 +29,8 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void setState(UI_STATE STATE) {	//Change method name to setState
-		this.StaTe = STATE;
+	public void setState(UiState state) {	//Change method name to setState
+		this.state = state;	//Fixed the names
 	}
 
 	
@@ -39,7 +39,7 @@ public class BorrowBookUI {
 		
 		while (true) {
 			
-			switch (StaTe) {			
+			switch (state) {			
 			
 			case CANCELLED:
 				output("Borrowing Cancelled");
