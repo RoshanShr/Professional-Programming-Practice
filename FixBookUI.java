@@ -3,27 +3,27 @@ import java.util.Scanner;
 
 public class FixBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };	//Changed the enum variable name (UiState)
 
 	private FixBookControl CoNtRoL;
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UiState StAtE;
 
 	
 	public FixBookUI(FixBookControl control) {
 		this.CoNtRoL = control;
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
+		StAtE = UiState.INITIALISED;
 		control.Set_Ui(this);
 	}
 
 
-	public void Set_State(UI_STATE state) {
+	public void setState(UiState state) {	//Changed the enum variable name (setState)
 		this.StAtE = state;
 	}
 
 	
-	public void RuN() {
+	public void run() {	//Changed the enum variable name (run)
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
