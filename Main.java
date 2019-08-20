@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static library LIB;
-	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+	private static Scanner in; //Changed the instance IN to in
+	private static library lib; //Changed the instance LIB to lib
+	private static String menu; //Changed the instance MENU to menu
+	private static Calendar cal; //Changed the instance CAL to cal
+	private static SimpleDateFormat sdf; //Changed the instance SDF to sdf
 	
 	
 	private static String Get_menu() {
@@ -39,27 +39,27 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.INSTANCE();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			in = new Scanner(System.in);
+			lib = library.INSTANCE();
+			cal = Calendar.INSTANCE();
+			sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (member m : LIB.MEMBERS()) {
+			for (member m : lib.MEMBERS()) {
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.BOOKS()) {
+			for (book b : lib.BOOKS()) {
 				output(b);
 			}
 						
-			MENU = Get_menu();
+			menu = Get_menu();
 			
 			boolean e = false;
 			
 			while (!e) {
 				
 				output("\n" + SDF.format(CAL.Date()));
-				String c = input(MENU);
+				String c = input(menu);
 				
 				switch (c.toUpperCase()) {
 				
@@ -127,7 +127,7 @@ public class Main {
 
 	private static void currentLoans() { //method name must start with lowercase and be in camelBack
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (loan loan : lib.CurrentLoans()) {
 			output(loan + "\n");
 		}		
 	}
@@ -136,7 +136,7 @@ public class Main {
 
 	private static void books() { //method name must start with lower case
 		output("");
-		for (book book : LIB.books()) {
+		for (book book : lib.books()) {
 			output(book + "\n");
 		}		
 	}
@@ -145,7 +145,7 @@ public class Main {
 
 	private static void members() { //method name must start with lower case
 		output("");
-		for (member member : LIB.MEMBERS()) {
+		for (member member : lib.MEMBERS()) {
 			output(member + "\n");
 		}		
 	}
@@ -170,9 +170,9 @@ public class Main {
 	private static void incrementDate() { //method name must start with lowercase and be in camelBack
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
-			output(SDF.format(CAL.Date()));
+			cal.incrementDate(days);
+			lib.checkCurrentLoans();
+			output(sdf.format(cal.Date()));
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid number of days\n");
@@ -185,7 +185,7 @@ public class Main {
 		String A = input("Enter author: ");
 		String T  = input("Enter title: ");
 		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C);
+		book B = lib.Add_book(A, T, C);
 		output("\n" + B + "\n");
 		
 	}
@@ -197,7 +197,7 @@ public class Main {
 			String FN  = input("Enter first name: ");
 			String EM = input("Enter email: ");
 			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = LIB.Add_mem(LN, FN, EM, PN);
+			member M = lib.Add_mem(LN, FN, EM, PN);
 			output("\n" + M + "\n");
 			
 		} catch (NumberFormatException e) {
@@ -209,7 +209,7 @@ public class Main {
 
 	private static String input(String prompt) {
 		System.out.print(prompt);
-		return IN.nextLine();
+		return in.nextLine();
 	}
 	
 	
