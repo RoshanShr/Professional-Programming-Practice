@@ -40,7 +40,7 @@ public class Calendar {
 	        calendar.set(java.util.Calendar.MINUTE, 0);  //Changed the instance name from CaLeNdAr to calender
 	        calendar.set(java.util.Calendar.SECOND, 0);  //Changed the instance name from CaLeNdAr to calender
 	        calendar.set(java.util.Calendar.MILLISECOND, 0); //Changed the instance name from CaLeNdAr to calender
-			return calendar.getTime(); ///Changed the instance name from CaLeNdAr to Calender
+			return calendar.getTime(); //Changed the instance name from CaLeNdAr to Calender
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -48,11 +48,11 @@ public class Calendar {
 	}
 
 	public synchronized Date dueDate(int loanPeriod) { //Changing the method name to meaningful verb phrase
-		Date NoW = Date();
+		Date now = Date(); //Changed the variable NoW to now
 		 calendar.add(java.util.Calendar.DATE, loanPeriod); //Changed the instance name from CaLeNdAr to calender
-		Date DuEdAtE =  calendar.getTime(); //Changed the instance name from CaLeNdAr to calender
-		 calendar.setTime(NoW); //Changed the instance name from CaLeNdAr to calender
-		return DuEdAtE;
+		Date duedate =  calendar.getTime(); //Changed the instance name from CaLeNdAr to calender
+		 calendar.setTime(now); //Changed the instance name from CaLeNdAr to calender and the varibale NoW to now
+		return duedate; //Changed the DuEdAtE to duedate
 	}
 	
 	public synchronized long getDaysDifference(Date targetDate) { //Changing the method name to meaningful verb phrase
