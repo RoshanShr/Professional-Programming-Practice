@@ -32,14 +32,14 @@ public class PayFineUI {
 			switch (state) {	//Changed the variable name to right order(state)
 
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
-					control.CaNcEl();
+				String memberCardDetails = input("Swipe member card (press <enter> to cancel): ");	//Changed the variable name to meaningful(memberCardDetails)
+				if (memberCardDetails.length() == 0) {
+					control.cancel();	//Changed the method name to right order(cancel)
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					control.Card_Swiped(Member_ID);
+					int memberId = Integer.valueOf(memberCardDetails).intValue();
+					control.cardSwiped(memberId);	//Changed the variable name to right order(memberId) and also changed method name(cardSwiped)
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -50,7 +50,7 @@ public class PayFineUI {
 				double AmouNT = 0;
 				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
 				if (Amt_Str.length() == 0) {
-					control.CaNcEl();
+					control.cancel();
 					break;
 				}
 				try {
