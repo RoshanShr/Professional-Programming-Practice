@@ -26,7 +26,7 @@ public class Book implements Serializable {	//Fixed the order of class name
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
+		sb.append("Book: ").append(id).append("\n")
 		  .append("  Title:  ").append(title).append("\n")
 		  .append("  Author: ").append(author).append("\n")
 		  .append("  CallNo: ").append(callNo).append("\n")
@@ -35,7 +35,7 @@ public class Book implements Serializable {	//Fixed the order of class name
 		return sb.toString();
 	}
 
-	public Integer id() {	//Change the method name to correct order(id)
+	public int id() {	//Change the method name to correct order(id)
 		return id;	//Fixed the variable name(id)
 	}
 
