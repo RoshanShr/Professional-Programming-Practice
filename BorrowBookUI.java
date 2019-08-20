@@ -5,13 +5,13 @@ public class BorrowBookUI {
 	
 	public static enum UiState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED }; //Fixed enum name order
 
-	private BorrowBookControl CONTROL;
+	private BorrowBookControl control;
 	private Scanner input;
 	private UiState state;	//Changed the variable names to correct order
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
-		this.CONTROL = control;
+		this.control = control;
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;
 		control.setUI(this);
@@ -49,12 +49,12 @@ public class BorrowBookUI {
 			case READY:
 				String memberDetails = input("Swipe member card (press <enter> to cancel): ");	//Changed variable name to right order(memberDetails)
 				if (memberDetails.length() == 0) {
-					CONTROL.cancel();
+					control.cancel();
 					break;
 				}
 				try {
 					int memberId = Integer.valueOf(memberDetails).intValue();	//Changed variable name to right order(memberId)
-					CONTROL.Swiped(memberId);
+					control.swiped(memberId);	//Fixed the method name to right order(swiped)
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -64,19 +64,19 @@ public class BorrowBookUI {
 				
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				control.cancel();
 				break;
 			
 				
 			case SCANNING:
 				String bookDetails = input("Scan Book (<enter> completes): ");	//Changed variable name to right order(bookDetails)
 				if (bookDetails.length() == 0) {
-					CONTROL.Complete();
+					control.complete();	//Fixed the method name to right order(complete)
 					break;
 				}
 				try {
 					int bookId = Integer.valueOf(bookDetails).intValue();	//Changed variable name to right order(bookId)
-					CONTROL.Scanned(bookId);
+					control.scanned(bookId);	//Fixed the method name to right order(scanned)
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -85,12 +85,12 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
-				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
+				String confirmation = input("Commit loans? (Y/N): ");	//Changed variable name to right order(confirmation)
+				if (confirmation.toUpperCase().equals("N")) {
+					control.cancel();
 					
 				} else {
-					CONTROL.commitLoans();	//Changed method name to right order(commitLoans)
+					control.commitLoans();	//Changed method name to right order(commitLoans)
 					input("Press <any key> to complete ");
 				}
 				break;
@@ -103,7 +103,7 @@ public class BorrowBookUI {
 				
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);			
 			}
 		}		
 	}
