@@ -121,13 +121,13 @@ public class Main {
 	}	
 
 		private static void fines() { //method name must start with lower case
-		new PayFineUI(new PayFineControl()).RuN();		
+		new PayFineUI(new payFineControl()).getRun();		//method name must start with lowercase and be in camelBack
 	}
 
 
 	private static void currentLoans() { //method name must start with lowercase and be in camelBack
 		output("");
-		for (loan loan : lib.CurrentLoans()) {
+		for (loan loan : lib.currentLoans()) { //method name must start with lowercase and be in camelBack
 			output(loan + "\n");
 		}		
 	}
@@ -153,17 +153,17 @@ public class Main {
 
 
 	private static void borrowBook() { //method name must start with lowercase and be in camelBack
-		new BorrowBookUI(new BorrowBookControl()).run();		
+		new BorrowBookUI(new BorrowBookControl()).getRun();		
 	}
 
 
 	private static void returnBook() { //method name must start with lowercase and be in camelBack
-		new ReturnBookUI(new ReturnBookControl()).RuN();		
+		new ReturnBookUI(new ReturnBookControl()).getRun();		
 	}
 
 
 	private static void fixBooks() { //method name must start with lowercase and be in camelBack
-		new FixBookUI(new FixBookControl()).RuN();		
+		new FixBookUI(new FixBookControl()).getRun();		
 	}
 
 
@@ -185,7 +185,7 @@ public class Main {
 		String A = input("Enter author: ");
 		String T  = input("Enter title: ");
 		String C = input("Enter call number: ");
-		book B = lib.Add_book(A, T, C);
+		book B = lib.addBook(A, T, C); //method name must start with lowercase and be in camelBack
 		output("\n" + B + "\n");
 		
 	}
