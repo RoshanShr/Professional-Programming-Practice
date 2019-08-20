@@ -7,22 +7,24 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class Member implements Serializable {	//Capitalized the first letter of the class name
 
-	private String LN;
-	private String FN;
-	private String EM;
-	private int PN;
-	private int ID;
+	private String lastName;
+	private String fastName;
+	private String email;
+	private int phoneNo;
+	private int id;
 	private double fines;
 	
 	private Map<Integer, loan> LNS;
 
 	
 	public Member(String lastName, String firstName, String email, int phoneNo, int id) {	//Capitalized the first letter of the constructor
-		this.LN = lastName;
-		this.FN = firstName;
-		this.EM = email;
-		this.PN = phoneNo;
-		this.ID = id;
+		
+		// Changed the variable names to make it more appropriate
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.phoneNo = phoneNo;
+		this.id = id;
 		
 		this.LNS = new HashMap<>();
 	}
@@ -30,10 +32,10 @@ public class Member implements Serializable {	//Capitalized the first letter of 
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(ID).append("\n")
-		  .append("  Name:  ").append(LN).append(", ").append(FN).append("\n")
-		  .append("  Email: ").append(EM).append("\n")
-		  .append("  Phone: ").append(PN)
+		sb.append("Member:  ").append(id).append("\n")
+		  .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n")
+		  .append("  Email: ").append(email).append("\n")
+		  .append("  Phone: ").append(phoneNo)
 		  .append("\n")
 		  .append(String.format("  Fines Owed :  $%.2f", fines))
 		  .append("\n");
@@ -46,7 +48,7 @@ public class Member implements Serializable {	//Capitalized the first letter of 
 
 	
 	public int getId() {	//Changed the method name to correct order
-		return ID;
+		return id;
 	}
 
 	
@@ -66,8 +68,8 @@ public class Member implements Serializable {	//Capitalized the first letter of 
 
 	
 	public void takeOutLoan(loan loan) {	//Changed the method name to correct order
-		if (!LNS.containsKey(loan.ID())) {
-			LNS.put(loan.ID(), loan);
+		if (!LNS.containsKey(loan.id())) {
+			LNS.put(loan.id(), loan);
 		}
 		else {
 			throw new RuntimeException("Duplicate loan added to member");
@@ -76,12 +78,12 @@ public class Member implements Serializable {	//Capitalized the first letter of 
 
 	
 	public String getLastName() {	//Changed the method name to correct order
-		return LN;
+		return lastName;
 	}
 
 	
 	public String getFirstName() {	//Changed the method name to correct order
-		return FN;
+		return firstName;
 	}
 
 
@@ -106,8 +108,8 @@ public class Member implements Serializable {	//Capitalized the first letter of 
 
 
 	public void disChargeLoan(loan Loan) {   //Changed the method name to correct order
-		if (LNS.containsKey(Loan.ID())) {
-			LNS.remove(Loan.ID());
+		if (LNS.containsKey(Loan.id())) {
+			LNS.remove(Loan.id());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
