@@ -42,9 +42,9 @@ public class Library implements Serializable { //Class name must start with capi
 		LOANS = new HashMap<>();
 		CURRENT_LOANS = new HashMap<>();
 		DAMAGED_BOOKS = new HashMap<>();
-		BOOK_ID = 1;
-		MEMBER_ID = 1;		
-		LOAN_ID = 1;		
+		bookId = 1; //Variable name must be in lowercase and camelBack
+		memberId = 1;		 //Variable name must be in lowercase and camelBack
+		loanId = 1;		//Variable name must be in lowercase and camelBack
 	}
 
 	
@@ -84,27 +84,27 @@ public class Library implements Serializable { //Class name must start with capi
 
 	
 	public int BookID() {
-		return BOOK_ID;
+		return bookId; //Variable name must be in lowercase and camelBack 
 	}
 	
 	
 	public int MemberID() {
-		return MEMBER_ID;
+		return memberId; //Variable name must be in lowercase and camelBack
 	}
 	
 	
 	private int NextBID() {
-		return BOOK_ID++;
+		return bookId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
 	private int NextMID() {
-		return MEMBER_ID++;
+		return memberId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
 	private int NextLID() {
-		return LOAN_ID++;
+		return loanId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
