@@ -56,16 +56,16 @@ public class ReturnBookControl {
 	}
 
 
-	public void Scanning_Complete() {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+	public void scanningComplete() { // Change method to scanningComplete
+		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
-		Ui.Set_State(ReturnBookUI.UI_STATE.COMPLETED);		
+		ui.setState(ReturnBookUI.UIState.COMPLETED);		
 	}
 
 
-	public void Discharge_loan(boolean isDamaged) {
-		if (!sTaTe.equals(CONTROL_STATE.INSPECTING)) {
+	public void dischargeLoanoan(boolean isDamaged) { // Change method to dischargeLoanoan
+		if (!state.equals(ControlState.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
 		lIbRaRy.Discharge_loan(currentLoan, isDamaged);
