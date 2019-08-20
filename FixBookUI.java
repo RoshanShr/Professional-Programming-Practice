@@ -7,18 +7,18 @@ public class FixBookUI {
 
 	private FixBookControl control;	//Changed the instance name to right order(control)
 	private Scanner input;
-	private UiState c;	//Changed the instance name to right order(state)
+	private UiState state;	//Changed the instance name to right order(state)
 
 	
 	public FixBookUI(FixBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;
-		control.Set_Ui(this);
+		control.setUi(this);	//Changed the method name to right order(setUi)
 	}
 
 
-	public void setState(UiState state) {	//Changed the enum variable name (setState)
+	public void setState(UiState state) {	//Changed the variable name to right order(setState)
 		this.state = state;
 	}
 
@@ -31,14 +31,14 @@ public class FixBookUI {
 			switch (state) {
 			
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
+				String bookDetails = input("Scan Book (<enter> completes): ");	//Changed the variable name to right order(bookDetails)
+				if (bookDetails.length() == 0) {
 					control.SCannING_COMplete();
 				}
 				else {
 					try {
-						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						control.Book_scanned(Book_ID);
+						int bookId = Integer.valueOf(bookDetails).intValue();	//Changed the variable name to right order(bookId)
+						control.Book_scanned(bookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
