@@ -125,14 +125,14 @@ public class Library implements Serializable { //Class name must start with capi
 
 	public Member Add_mem(String lastName, String firstName, String email, int phoneNo) { //Class name member changed to Member
 		Member member = new member(lastName, firstName, email, phoneNo, nextMid());
-		MEMBERS.put(member.GeT_ID(), member);	//method GET_ID changed to getID	
+		MEMBERS.put(member.getID(), member);	//method GET_ID changed to getID	
 		return member;
 	}
 
 	
 	public book addBook(String a, String t, String c) {	//Method name Add_book changed to aadBook	
-		book b = new book(a, t, c, NextBID());
-		CATALOG.put(b.ID(), b);		
+		book b = new book(a, t, c, nextBid());
+		CATALOG.put(b.getId(), b); //Method name must start with lowercase and be in camelBack		
 		return b;
 	}
 
@@ -151,7 +151,7 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public int LOAN_LIMIT() {
+	public int loanLimit() { //Method name must start with lowercase and be in camelBack	
 		return loanLimit;
 	}
 
@@ -160,29 +160,29 @@ public class Library implements Serializable { //Class name must start with capi
 		if (member.Number_Of_Current_Loans() == loanLimit ) 
 			return false;
 				
-		if (member.Fines_OwEd() >= maxFinesOwed) 
+		if (member.finesOwed() >= maxFinesOwed)  //Method name must start with lowercase and be in camelBack	
 			return false;
 				
-		for (Loan loan : Member.GeT_LoAnS()) 
-			if (loan.OVer_Due()) 
+		for (Loan loan : Member.getLoans()) //Method name must start with lowercase and be in camelBack	
+			if (loan.overDue()) //Method name must start with lowercase and be in camelBack	
 				return false;
 			
 		return true;
 	}
 
 	
-	public int Loans_Remaining_For_Member(Member member) {		
-		return loanLimit - member.Number_Of_Current_Loans();
+	public int loansRemainingForMember(Member member) { //Method name must start with lowercase and be in camelBack			
+		return loanLimit - member.numberOfCurrentLoans(); //Method name must start with lowercase and be in camelBack	
 	}
 
 	
-	public loan ISSUE_LAON(Book book, Member member) {
-		Date dueDate = Calendar.getInstance().Due_Date(loanPeriod);
-		loan loan = new loan(NextLID(), book, member, dueDate);
-		member.Take_Out_Loan(loan);
+	public loan issueLoan(Book book, Member member) { //Method name must start with lowercase and be in camelBack	
+		Date dueDate = Calendar.getInstance().dueDate(loanPeriod); //Method name must start with lowercase and be in camelBack	
+		loan loan = new loan(nextLid(), book, member, dueDate);
+		member.takeOutLoan(loan); //Method name must start with lowercase and be in camelBack	
 		book.Borrow();
-		LOANS.put(loan.ID(), loan);
-		CURRENT_LOANS.put(book.ID(), loan);
+		LOANS.put(loan.getId(), loan); //Method name must start with lowercase and be in camelBack	
+		CURRENT_LOANS.put(book.getId(), loan); //Method name must start with lowercase and be in camelBack	
 		return loan;
 	}
 	
@@ -195,9 +195,10 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public double CalculateOverDueFine(loan loan) {
-		if (loan.OVer_Due()) {
-			long daysOverDue = Calendar.getInstance().Get_Days_Difference(loan.Get_Due_Date());
+	public double calculateOverDueFine(loan loan) { //Method name must start with lowercase and be in camelBack	
+		if (loan.overDue()) { //Method name must start with lowercase and be in camelBack	
+			long daysOverDue = Calendar.getInstance().getDaysDifference(loan.getDueDate()); //Method name must start with lowercase and be in camelBack	
+			long daysOverDue = Calendar.getInstance().getDifference(loan.getDueDate()); //Method name must start with lowercase and be in camelBack	
 			double fine = daysOverDue * finePerDay;
 			return fine;
 		}
@@ -205,20 +206,20 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 
-	public void Discharge_loan(loan currentLoan, boolean isDamaged) {
+	public void dischargeLoan(loan currentLoan, boolean isDamaged) { //Method name must start with lowercase and be in camelBack	
 		Member member = currentLoan.member();
 		book book  = currentLoan.Book();
 		
 		double overDueFine = CalculateOverDueFine(currentLoan);
 		member.Add_Fine(overDueFine);	
 		
-		member.dIsChArGeLoAn(currentLoan);
+		member.disChargeLoan(currentLoan); //Method name must start with lowercase and be in camelBack	
 		book.Return(isDamaged);
 		if (isDamaged) {
-			member.Add_Fine(damageFee);
-			DAMAGED_BOOKS.put(book.ID(), book);
+			member.addFine(damageFee);
+			damagedBooks.put(book.ID(), book); //Method name must start with lowercase and be in camelBack	
 		}
-		currentLoan.DiScHaRgE();
+		currentLoan.getDischarge(); //Method name must start with lowercase and be in camelBack	
 		CURRENT_LOANS.remove(book.ID());
 	}
 
@@ -230,7 +231,7 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 
-	public void Repair_BOOK(book currentBook) {
+	public void repairBook(book currentBook) {
 		if (DAMAGED_BOOKS.containsKey(currentBook.ID())) {
 			currentBook.Repair();
 			DAMAGED_BOOKS.remove(currentBook.ID());
