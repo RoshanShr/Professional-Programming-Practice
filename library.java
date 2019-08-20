@@ -123,8 +123,8 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
-		member member = new member(lastName, firstName, email, phoneNo, NextMID());
+	public Member Add_mem(String lastName, String firstName, String email, int phoneNo) { //Class name member changed to Member
+		Member member = new member(lastName, firstName, email, phoneNo, NextMID());
 		MEMBERS.put(member.GeT_ID(), member);		
 		return member;
 	}
@@ -137,7 +137,7 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public member MEMBER(int memberId) {
+	public Member MEMBER(int memberId) {
 		if (MEMBERS.containsKey(memberId)) 
 			return MEMBERS.get(memberId);
 		return null;
@@ -156,14 +156,14 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public boolean MEMBER_CAN_BORROW(member member) {		
+	public boolean MEMBER_CAN_BORROW(Member member) {		
 		if (member.Number_Of_Current_Loans() == loanLimit ) 
 			return false;
 				
 		if (member.Fines_OwEd() >= maxFinesOwed) 
 			return false;
 				
-		for (loan loan : member.GeT_LoAnS()) 
+		for (Loan loan : Member.GeT_LoAnS()) 
 			if (loan.OVer_Due()) 
 				return false;
 			
@@ -171,12 +171,12 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public int Loans_Remaining_For_Member(member member) {		
+	public int Loans_Remaining_For_Member(Member member) {		
 		return loanLimit - member.Number_Of_Current_Loans();
 	}
 
 	
-	public loan ISSUE_LAON(book book, member member) {
+	public loan ISSUE_LAON(Book book, Member member) {
 		Date dueDate = Calendar.getInstance().Due_Date(loanPeriod);
 		loan loan = new loan(NextLID(), book, member, dueDate);
 		member.Take_Out_Loan(loan);
@@ -206,7 +206,7 @@ public class Library implements Serializable { //Class name must start with capi
 
 
 	public void Discharge_loan(loan currentLoan, boolean isDamaged) {
-		member member = currentLoan.Member();
+		Member member = currentLoan.member();
 		book book  = currentLoan.Book();
 		
 		double overDueFine = CalculateOverDueFine(currentLoan);
