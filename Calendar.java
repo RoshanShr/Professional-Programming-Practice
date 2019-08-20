@@ -57,9 +57,9 @@ public class Calendar {
 	
 	public synchronized long getDaysDifference(Date targetDate) { //Changing the method name to meaningful verb phrase
 		
-		long Diff_Millis = Date().getTime() - targetDate.getTime();
-	    long Diff_Days = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS);
-	    return Diff_Days;
+		long diffMillis = Date().getTime() - targetDate.getTime(); //Changed the variable name
+	    long diffDays = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS); //Changed the variable name
+	    return diffDays; //Changed the variable name
 	}
 
 }
