@@ -185,7 +185,7 @@ public class Main {
 		String enterName = input("Enter author: "); //Variable name changed to meaningful name
 		String enterTitle  = input("Enter title: "); //Variable name changed to meaningful name
 		String enterNumber = input("Enter call number: "); //Variable name changed to meaningful name
-		book book = lib.addBook(enterName, enterTitle, enterNumber); //method name must start with lowercase and be in camelBack
+		Book book = lib.addBook(enterName, enterTitle, enterNumber); //method name must start with lowercase and be in camelBack and class name must start from uppercase
 		output("\n" + book + "\n");
 		
 	}
