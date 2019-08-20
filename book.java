@@ -6,7 +6,7 @@ public class Book implements Serializable {	//Fixed the order of class name
 	
 	//Changed the following variable names to right order
 	private String title;
-	private String athor;
+	private String author;
 	private String callNo;
 	private int id;
 	
@@ -27,10 +27,10 @@ public class Book implements Serializable {	//Fixed the order of class name
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Book: ").append(id).append("\n")
-		  .append("  Title:  ").append(title).append("\n")
-		  .append("  Author: ").append(author).append("\n")
-		  .append("  CallNo: ").append(callNo).append("\n")
-		  .append("  State:  ").append(state);
+		  .append("Title:  ").append(title).append("\n")
+		  .append("Author: ").append(author).append("\n")
+		  .append("CallNo: ").append(callNo).append("\n")
+		  .append("State:  ").append(state);
 		
 		return sb.toString();
 	}
