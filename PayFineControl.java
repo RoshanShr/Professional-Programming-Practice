@@ -24,25 +24,25 @@ public class PayFineControl {
 	}
 
 
-	public void Card_Swiped(int memberId) {
-		if (!StAtE.equals(CONTROL_STATE.READY)) {
+	public void cardSwiped(int memberId) { //Changed method to cardSwiped
+		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
 		member = library.Member(memberId);
 		
 		if (member == null) {
-			ui.DiSplAY("Invalid Member Id");
+			ui.display("Invalid Member Id");
 			return;
 		}
-		ui.DiSplAY(member.toString());
-		ui.Set_State(PayFineUI.UI_STATE.PAYING);
-		StAtE = CONTROL_STATE.PAYING;
+		ui.display(member.toString());
+		ui.setState(PayFineUI.UIState.PAYING);
+		StAtE = ControlState.PAYING;
 	}
 	
 	
-	public void CaNcEl() {
-		ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
-		StAtE = CONTROL_STATE.CANCELLED;
+	public void cancel() { // changed method to cancel
+		ui.setState(PayFineUI.UIState.CANCELLED);
+		state = ControlState.CANCELLED;
 	}
 
 
