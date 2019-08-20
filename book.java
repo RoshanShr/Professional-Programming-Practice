@@ -11,24 +11,26 @@ public class Book implements Serializable {	//Fixed the order of class name
 	private int id;
 	
 	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };	//Change the enum variable to right format(State)
-	private State State;
+	private State state;
 	
 	
 	public Book(String author, String title, String callNo, int id) {	//Fixed the order of constructor name
-		this.AUTHOR = author;
-		this.TITLE = title;
-		this.CALLNO = callNo;
-		this.ID = id;
-		this.State = STATE.AVAILABLE;
+		
+		//Changed the following variable names to right order
+		this.author = author;
+		this.title = title;
+		this.callNo = callNo;
+		this.id = id;
+		this.state = state.AVAILABLE;
 	}
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(TITLE).append("\n")
-		  .append("  Author: ").append(AUTHOR).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(State);
+		  .append("  Title:  ").append(title).append("\n")
+		  .append("  Author: ").append(author).append("\n")
+		  .append("  CallNo: ").append(callNo).append("\n")
+		  .append("  State:  ").append(state);
 		
 		return sb.toString();
 	}
