@@ -4,12 +4,12 @@ public class PayFineControl {
 	private enum ControlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; //Changed the enusm to ControlState
 	private ControlState state; //Changed variable to state
 	
-	private library LiBrArY;
-	private member MeMbEr;
+	private Library library; //Changed instance to library of Library class
+	private Member member; //Changed instance to member of Member class
 
 
 	public PayFineControl() {
-		this.LiBrArY = LiBrArY.INSTANCE();
+		this.library = library.INSTANCE();
 		StAtE = CONTROL_STATE.INITIALISED;
 	}
 	
@@ -28,13 +28,13 @@ public class PayFineControl {
 		if (!StAtE.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
-		MeMbEr = LiBrArY.MEMBER(memberId);
+		member = library.Member(memberId);
 		
-		if (MeMbEr == null) {
+		if (member == null) {
 			ui.DiSplAY("Invalid Member Id");
 			return;
 		}
-		ui.DiSplAY(MeMbEr.toString());
+		ui.DiSplAY(member.toString());
 		ui.Set_State(PayFineUI.UI_STATE.PAYING);
 		StAtE = CONTROL_STATE.PAYING;
 	}
@@ -50,11 +50,11 @@ public class PayFineControl {
 		if (!StAtE.equals(CONTROL_STATE.PAYING)) {
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
-		double ChAnGe = MeMbEr.Pay_Fine(AmOuNt);
+		double ChAnGe = member.Pay_Fine(AmOuNt);
 		if (ChAnGe > 0) {
 			ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
 		}
-		ui.DiSplAY(MeMbEr.toString());
+		ui.DiSplAY(member.toString());
 		ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
 		StAtE = CONTROL_STATE.COMPLETED;
 		return ChAnGe;
