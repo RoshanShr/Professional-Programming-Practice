@@ -52,7 +52,7 @@ public class FixBookControl {
 			library.repairBook(book); // Changed method to repairBook
 		}
 		book = null;
-		ui.Set_state(FixBookUI.UI_state.READY);
+		ui.setState(FixBookUI.UiState.READY);
 		state = Controlstate.READY;		
 	}
 
@@ -61,7 +61,7 @@ public class FixBookControl {
 		if (!state.equals(Controlstate.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call scanningComplete except in READY state");
 		}	
-		ui.Set_state(FixBookUI.UI_state.COMPLETED);		
+		ui.setState(FixBookUI.UiState.COMPLETED); // Changed method to setState		
 	}
 
 
