@@ -69,14 +69,14 @@ public class BorrowBookUI {
 			
 				
 			case SCANNING:
-				String Book_Str = input("Scan Book (<enter> completes): ");
-				if (Book_Str.length() == 0) {
+				String bookDetails = input("Scan Book (<enter> completes): ");	//Changed variable name to right order(bookDetails)
+				if (bookDetails.length() == 0) {
 					CONTROL.Complete();
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
+					int bookId = Integer.valueOf(bookDetails).intValue();	//Changed variable name to right order(bookId)
+					CONTROL.Scanned(bookId);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -90,7 +90,7 @@ public class BorrowBookUI {
 					CONTROL.cancel();
 					
 				} else {
-					CONTROL.Commit_LOans();
+					CONTROL.commitLoans();	//Changed method name to right order(commitLoans)
 					input("Press <any key> to complete ");
 				}
 				break;
