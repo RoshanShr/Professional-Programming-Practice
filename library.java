@@ -36,7 +36,7 @@ public class Library implements Serializable { //Class name must start with capi
 	private Map<Integer, book> DAMAGED_BOOKS;
 	
 
-	private library() {
+	private getLibrary() { //Method name should be a verb and start with lowercase and be in camelback
 		CATALOG = new HashMap<>();
 		MEMBERS = new HashMap<>();
 		LOANS = new HashMap<>();
@@ -48,14 +48,14 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public static synchronized library INSTANCE() {		
+	public static synchronized library getInstance() {	//Method name should be a verb and start with lowercase and be in camelback	
 		if (SeLf == null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
 					SeLf = (library) LiF.readObject();
-					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
+					Calendar.getInstance().setDate(SeLf.LOAN_DATE); //Method name should be a verb and start with lowercase and be in camelback
 					LiF.close();
 				}
 				catch (Exception e) {
@@ -68,9 +68,9 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public static synchronized void SAVE() {
+	public static synchronized void isSave() { //Method name should be a verb and start with lowercase and be in camelback
 		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
+			SeLf.LOAN_DATE = Calendar.getInstance().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
 				LoF.writeObject(SeLf);
 				LoF.flush();
@@ -177,7 +177,7 @@ public class Library implements Serializable { //Class name must start with capi
 
 	
 	public loan ISSUE_LAON(book book, member member) {
-		Date dueDate = Calendar.INSTANCE().Due_Date(loanPeriod);
+		Date dueDate = Calendar.getInstance().Due_Date(loanPeriod);
 		loan loan = new loan(NextLID(), book, member, dueDate);
 		member.Take_Out_Loan(loan);
 		book.Borrow();
@@ -197,7 +197,7 @@ public class Library implements Serializable { //Class name must start with capi
 	
 	public double CalculateOverDueFine(loan loan) {
 		if (loan.OVer_Due()) {
-			long daysOverDue = Calendar.INSTANCE().Get_Days_Difference(loan.Get_Due_Date());
+			long daysOverDue = Calendar.getInstance().Get_Days_Difference(loan.Get_Due_Date());
 			double fine = daysOverDue * finePerDay;
 			return fine;
 		}
