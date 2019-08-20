@@ -35,11 +35,11 @@ public class ReturnBookControl {
 			ui.display("Invalid Book Id");
 			return;
 		}
-		if (!book.onLoan()) { // Method to onLoan
-			Ui.display("Book has not been borrowed");
+		if (!book.onLoan()) { // updated to onLoan
+			ui.display("Book has not been borrowed");
 			return;
 		}		
-		currentLoan = lIbRaRy.LOAN_BY_BOOK_ID(Book_ID);	
+		currentLoan = library.loanByBookId(bookId);	// Changed method to loanByBookId
 		double Over_Due_Fine = 0.0;
 		if (currentLoan.OVer_Due()) {
 			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(currentLoan);
