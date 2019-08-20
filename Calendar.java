@@ -11,7 +11,7 @@ public class Calendar {
 		calendar = java.util.Calendar.getInstance(); //Changed the instance name from CaLeNdAr to calender
 	}
 	
-	public static Calendar INSTANCE() {
+	public static Calendar getInstance() { //Changed the method name
 		if (self == null) {
 			self = new Calendar();
 		}
@@ -25,10 +25,11 @@ public class Calendar {
 	public synchronized void setDate(Date date) { //Changing the method name to meaningful verb phrase
 		try {
 			calendar.setTime(date); //Changed the instance name
-	        calendar.set(java.util.Calendar.HourOfDay, 0);  //Changed the instance name from CaLeNdAr to calender and class name from HOUR_OF_DAY to HourOfDay
-	        calendar.set(java.util.Calendar.Minute, 0);  //Changed the instance name from CaLeNdAr to calender and class name from MINUTE to Minute
-	        calendar.set(java.util.Calendar.Second, 0);  //Changed the instance name from CaLeNdAr to calender and class name from SECOND to Second
-	        calendar.set(java.util.Calendar.MilliSecond, 0); //Changed the instance name from CaLeNdAr to calender and class name from MILLISECOND to MilliSecond
+	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+	        calendar.set(java.util.Calendar.MINUTE, 0); 
+	        calendar.set(java.util.Calendar.SECOND, 0);  
+	        calendar.set(java.util.Calendar.MILLISECOND, 0); 
+			return calendar.getTime(); 
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -36,11 +37,10 @@ public class Calendar {
 	}
 	public synchronized Date date() { //Changing the method name to meaningful verb phrase
 		try {
-	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  ////Changed the instance name from CaLeNdAr to calender
-	        calendar.set(java.util.Calendar.MINUTE, 0);  //Changed the instance name from CaLeNdAr to calender
-	        calendar.set(java.util.Calendar.SECOND, 0);  //Changed the instance name from CaLeNdAr to calender
-	        calendar.set(java.util.Calendar.MILLISECOND, 0); //Changed the instance name from CaLeNdAr to calender
-			return calendar.getTime(); //Changed the instance name from CaLeNdAr to Calender
+	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+	        calendar.set(java.util.Calendar.SECOND, 0);  
+	        calendar.set(java.util.Calendar.MILLISECOND, 0); 
+			return calendar.getTime();
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -49,16 +49,16 @@ public class Calendar {
 
 	public synchronized Date dueDate(int loanPeriod) { //Changing the method name to meaningful verb phrase
 		Date now = Date(); //Changed the variable NoW to now
-		 calendar.add(java.util.Calendar.DATE, loanPeriod); //Changed the instance name from CaLeNdAr to calender
-		Date duedate =  calendar.getTime(); //Changed the instance name from CaLeNdAr to calender
+		 calendar.add(java.util.Calendar.DATE, loanPeriod); 
+		Date duedate =  calendar.getTime(); 
 		 calendar.setTime(now); //Changed the instance name from CaLeNdAr to calender and the varibale NoW to now
-		return duedate; //Changed the DuEdAtE to duedate
+		return dueDate; //Changed the variable DuEdAtE to dueDate
 	}
 	
 	public synchronized long getDaysDifference(Date targetDate) { //Changing the method name to meaningful verb phrase
 		
 		long diffMillis = Date().getTime() - targetDate.getTime(); //Changed the variable name
-	    long diffDays = TimeUnit.DAYS.convert(Diff_Millis, TimeUnit.MILLISECONDS); //Changed the variable name
+	    long diffDays = timeUnit.days.convert(diffMills, timeUnit.MILLISECONDS); //Changed the variable name and method name
 	    return diffDays; //Changed the variable name
 	}
 
