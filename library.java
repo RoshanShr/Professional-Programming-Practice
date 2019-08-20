@@ -52,11 +52,11 @@ public class Library implements Serializable { //Class name must start with capi
 		if (self == null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
-				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
+				try (ObjectInputStream lif = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
-					self = (Library) LiF.readObject();
+					self = (Library) lif.readObject(); //Changed object LiF to lif
 					Calendar.getInstance().setDate(self.LOAN_DATE); //Method name should be a verb and start with lowercase and be in camelback
-					LiF.close();
+					lif.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
