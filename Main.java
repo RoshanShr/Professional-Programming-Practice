@@ -112,7 +112,7 @@ public class Main {
 					break;
 				}
 				
-				library.SAVE();
+				library.getSave(); //Method SAVE changed to getSave
 			}			
 		} catch (RuntimeException e) {
 			output(e);
