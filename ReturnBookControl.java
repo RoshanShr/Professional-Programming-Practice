@@ -1,11 +1,11 @@
 public class ReturnBookControl {
 
-	private ReturnBookUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE sTaTe;
+	private ReturnBookUI ui;
+	private enum ControlState { INITIALISED, READY, INSPECTING }; //Changed the enusm to ControlState
+	private ControlState state;
 	
-	private library lIbRaRy;
-	private loan CurrENT_loan;
+	private Library library; // Changed variable to library
+	private Loan currentLoan;
 	
 
 	public ReturnBookControl() {
@@ -38,16 +38,16 @@ public class ReturnBookControl {
 			Ui.display("Book has not been borrowed");
 			return;
 		}		
-		CurrENT_loan = lIbRaRy.LOAN_BY_BOOK_ID(Book_ID);	
+		currentLoan = lIbRaRy.LOAN_BY_BOOK_ID(Book_ID);	
 		double Over_Due_Fine = 0.0;
-		if (CurrENT_loan.OVer_Due()) {
-			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(CurrENT_loan);
+		if (currentLoan.OVer_Due()) {
+			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(currentLoan);
 		}
 		Ui.display("Inspecting");
 		Ui.display(CUR_book.toString());
-		Ui.display(CurrENT_loan.toString());
+		Ui.display(currentLoan.toString());
 		
-		if (CurrENT_loan.OVer_Due()) {
+		if (currentLoan.OVer_Due()) {
 			Ui.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
 		}
 		Ui.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
@@ -67,8 +67,8 @@ public class ReturnBookControl {
 		if (!sTaTe.equals(CONTROL_STATE.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
-		lIbRaRy.Discharge_loan(CurrENT_loan, isDamaged);
-		CurrENT_loan = null;
+		lIbRaRy.Discharge_loan(currentLoan, isDamaged);
+		currentLoan = null;
 		Ui.Set_State(ReturnBookUI.UI_STATE.READY);
 		sTaTe = CONTROL_STATE.READY;				
 	}
