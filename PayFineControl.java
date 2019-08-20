@@ -20,7 +20,7 @@ public class PayFineControl {
 		}	
 		this.ui = ui;
 		ui.setState(PayFineUI.UIState.READY); //Changed method to setState
-		StAtE = ControlState.READY;		
+		state = ControlState.READY;		
 	}
 
 
@@ -36,7 +36,7 @@ public class PayFineControl {
 		}
 		ui.display(member.toString());
 		ui.setState(PayFineUI.UIState.PAYING);
-		StAtE = ControlState.PAYING;
+		state = ControlState.PAYING; // Change variable to state
 	}
 	
 	
