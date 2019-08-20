@@ -182,11 +182,11 @@ public class Main {
 
 	private static void addBook() { //method name must start with lowercase and be in camelBack
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = lib.addBook(A, T, C); //method name must start with lowercase and be in camelBack
-		output("\n" + B + "\n");
+		String enterName = input("Enter author: "); //Variable name changed to meaningful name
+		String enterTitle  = input("Enter title: "); //Variable name changed to meaningful name
+		String enterNumber = input("Enter call number: "); //Variable name changed to meaningful name
+		book book = lib.addBook(enterName, enterTitle, enterNumber); //method name must start with lowercase and be in camelBack
+		output("\n" + book + "\n");
 		
 	}
 
