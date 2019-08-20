@@ -59,7 +59,7 @@ public class Calendar {
 		
 		long diffMillis = Date().getTime() - targetDate.getTime(); //Changed the variable name
 		long diffDays = timeUnit.days.convert(diffMills, timeUnit.MILLISECONDS); //Changed the variable name and method name
-	    return diffDays; //Changed the variable name
+		return diffDays; //Changed the variable name
 	}
 
 }
