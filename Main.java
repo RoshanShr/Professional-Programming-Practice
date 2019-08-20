@@ -48,7 +48,7 @@ public class Main {
 				output(m);
 			}
 			output(" ");
-			for (book b : lib.BOOKS()) {
+			for (book b : lib.getBooks()) { //Method name changed from BOOKS to getBooks
 				output(b);
 			}
 						
@@ -134,9 +134,9 @@ public class Main {
 
 
 
-	private static void books() { //method name must start with lower case
+	private static void getBbooks() { //method name must start with lowercase and camelBack
 		output("");
-		for (book book : lib.books()) {
+		for (book book : lib.getBooks()) {
 			output(book + "\n");
 		}		
 	}
