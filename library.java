@@ -83,27 +83,27 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public int BookID() {
+	public int bookId() { //Method name changed to lowercase and camelBack.
 		return bookId; //Variable name must be in lowercase and camelBack 
 	}
 	
 	
-	public int MemberID() {
+	public int memberId() { //Method name changed to lowercase and camelBack.
 		return memberId; //Variable name must be in lowercase and camelBack
 	}
 	
 	
-	private int NextBID() {
+	private int nextBid() { //Method name changed to lowercase and camelBack.
 		return bookId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
-	private int NextMID() {
+	private int nextMid() { //Method name changed to lowercase and camelBack.
 		return memberId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
-	private int NextLID() {
+	private int nextLid() { //Method name changed to lowercase and camelBack.
 		return loanId++; //Variable name must be in lowercase and camelBack
 	}
 
