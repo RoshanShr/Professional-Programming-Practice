@@ -193,11 +193,11 @@ public class Main {
 	
 	private static void addMember() { //method name must start with lowercase and be in camelBack
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = lib.Add_mem(LN, FN, EM, PN);
+			String ln = input("Enter last name: "); //Variable name must be in lowercase
+			String fn  = input("Enter first name: "); //Variable name must be in lowercase
+			String em = input("Enter email: "); //Variable name must be in lowercase
+			int pn = Integer.valueOf(input("Enter phone number: ")).intValue(); //Variable name must be in lowercase
+			member M = lib.Add_mem(ln, fn, em, pn); //Variable name must be in lowercase
 			output("\n" + M + "\n");
 			
 		} catch (NumberFormatException e) {
