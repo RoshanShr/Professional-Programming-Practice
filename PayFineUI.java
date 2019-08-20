@@ -6,16 +6,16 @@ public class PayFineUI {
 
 	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };	//Changed the enum variable name to correct order (UiState)
 
-	private PayFineControl CoNtRoL;
+	private PayFineControl control;	//Changed the instance name to right order(control)
 	private Scanner input;
 	private UiState state;	//Changed the instance name to right order(state)
 
 	
 	public PayFineUI(PayFineControl control) {
-		this.CoNtRoL = control;
+		this.control = control;
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;
-		control.Set_UI(this);
+		control.setUi(this);	//Changed the method name to right order(setUi)
 	}
 	
 	
@@ -34,12 +34,12 @@ public class PayFineUI {
 			case READY:
 				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
 				if (Mem_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+					control.CaNcEl();
 					break;
 				}
 				try {
 					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.Card_Swiped(Member_ID);
+					control.Card_Swiped(Member_ID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -50,7 +50,7 @@ public class PayFineUI {
 				double AmouNT = 0;
 				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
 				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+					control.CaNcEl();
 					break;
 				}
 				try {
@@ -61,7 +61,7 @@ public class PayFineUI {
 					output("Amount must be positive");
 					break;
 				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+				control.PaY_FiNe(AmouNT);
 				break;
 								
 			case CANCELLED:
