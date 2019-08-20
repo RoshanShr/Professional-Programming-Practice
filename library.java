@@ -23,7 +23,7 @@ public class Library implements Serializable { //Class name must start with capi
 	private static final double MAX_FINES_OWED = 1.0; //Constants must be all upper case and underscore separated
 	private static final double DAMAGE_FREE = 2.0; //Constants must be all upper case and underscore separated
 	
-	private static library SeLf;
+	private static Library self; //Changed the class library to Library and instance SeLf to self
 	private int bookId; //Variable name must start with lower case and be in camelBack.
 	private int memberId; //Variable name must start with lower case and be in camelBack.
 	private int loanId; //Variable name must start with lower case and be in camelBack.
@@ -48,31 +48,31 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public static synchronized library getInstance() {	//Method name should be a verb and start with lowercase and be in camelback	
-		if (SeLf == null) {
+	public static synchronized Library getInstance() {	//Method name should be a verb and start with lowercase and be in camelback	
+		if (self == null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
-					SeLf = (library) LiF.readObject();
-					Calendar.getInstance().setDate(SeLf.LOAN_DATE); //Method name should be a verb and start with lowercase and be in camelback
+					self = (Library) LiF.readObject();
+					Calendar.getInstance().setDate(self.LOAN_DATE); //Method name should be a verb and start with lowercase and be in camelback
 					LiF.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new library();
+			else self = new Library();
 		}
-		return SeLf;
+		return self;
 	}
 
 	
 	public static synchronized void isSave() { //Method name should be a verb and start with lowercase and be in camelback
-		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.getInstance().Date();
+		if (self != null) {
+			self.LOAN_DATE = Calendar.getInstance().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
-				LoF.writeObject(SeLf);
+				LoF.writeObject(self);
 				LoF.flush();
 				LoF.close();	
 			}
