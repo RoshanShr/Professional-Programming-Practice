@@ -130,7 +130,7 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public book Add_book(String a, String t, String c) {		
+	public book addBook(String a, String t, String c) {	//Method name Add_book changed to aadBook	
 		book b = new book(a, t, c, NextBID());
 		CATALOG.put(b.ID(), b);		
 		return b;
