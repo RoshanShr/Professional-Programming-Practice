@@ -24,11 +24,11 @@ public class Calendar {
 	
 	public synchronized void setDate(Date date) { //Changing the method name to meaningful verb phrase
 		try {
-		    calendar.setTime(date); //Changed the instance name
-	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        calendar.set(java.util.Calendar.MINUTE, 0); 
-	        calendar.set(java.util.Calendar.SECOND, 0);  
-	        calendar.set(java.util.Calendar.MILLISECOND, 0); 
+			calendar.setTime(date); //Changed the instance name
+			calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			calendar.set(java.util.Calendar.MINUTE, 0); 
+			calendar.set(java.util.Calendar.SECOND, 0);  
+			calendar.set(java.util.Calendar.MILLISECOND, 0); 
 			return calendar.getTime(); 
 		}
 		catch (Exception e) {
@@ -58,7 +58,7 @@ public class Calendar {
 	public synchronized long getDaysDifference(Date targetDate) { //Changing the method name to meaningful verb phrase
 		
 		long diffMillis = Date().getTime() - targetDate.getTime(); //Changed the variable name
-	    long diffDays = timeUnit.days.convert(diffMills, timeUnit.MILLISECONDS); //Changed the variable name and method name
+		long diffDays = timeUnit.days.convert(diffMills, timeUnit.MILLISECONDS); //Changed the variable name and method name
 	    return diffDays; //Changed the variable name
 	}
 
