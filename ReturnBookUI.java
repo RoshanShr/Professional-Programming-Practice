@@ -18,12 +18,12 @@ public class ReturnBookUI {
 	}
 
 
-	public void RuN() {		
+	public void run() {		// Changed method to run
 		output("Return Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StATe) {
+			switch (state) { //Chnaged to state
 			
 			case INITIALISED:
 				break;
