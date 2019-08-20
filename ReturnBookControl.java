@@ -40,19 +40,19 @@ public class ReturnBookControl {
 			return;
 		}		
 		currentLoan = library.loanByBookId(bookId);	// Changed method to loanByBookId
-		double Over_Due_Fine = 0.0;
-		if (currentLoan.OVer_Due()) {
-			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(currentLoan);
+		double overDueFine = 0.0;
+		if (currentLoan.overDue()) { // Change method to overDue
+			overDueFine = library.CalculateOverDueFine(currentLoan);
 		}
-		Ui.display("Inspecting");
-		Ui.display(CUR_book.toString());
-		Ui.display(currentLoan.toString());
+		ui.display("Inspecting");
+		ui.display(book.toString());
+		ui.display(currentLoan.toString());
 		
-		if (currentLoan.OVer_Due()) {
-			Ui.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
+		if (currentLoan.overDue()) {
+			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
-		Ui.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
-		sTaTe = CONTROL_STATE.INSPECTING;		
+		ui.setState(ReturnBookUI.UIState.INSPECTING);
+		state = ControlState.INSPECTING;		
 	}
 
 
