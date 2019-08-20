@@ -40,14 +40,14 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			ui.display("Invalid memberId");
 			return;
 		}
-		if (library.MEMBER_CAN_BORROW(member)) {
+		if (library.memberCanBorrow(member)) { // Changed method to memberCanBorrow
 			PENDING = new ArrayList<>();
-			ui.Set_state(BorrowBookUI.UIState.SCANNING);
+			ui.setState(BorrowBookUI.UIState.SCANNING);
 			state = ControlState.SCANNING; }
 		else 
 		{
 			ui.display("Member cannot borrow at this time");
-			ui.Set_state(BorrowBookUI.UIState.RESTRICTED); }}
+			ui.setState(BorrowBookUI.UIState.RESTRICTED); }}
 	
 	
 	public void scanned(int bookId) { //Modified function to scanned
@@ -65,7 +65,7 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			return;
 		}
 		PENDING.add(book);
-		for (Book book : PENDING) {
+		for (pendingBook : PENDING) { //Changed variable to pendingBook
 			ui.display(B.toString());
 		}
 		if (library.Loans_Remaining_For_Member(member) - PENDING.size() == 0) {
