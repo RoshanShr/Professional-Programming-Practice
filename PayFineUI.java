@@ -4,23 +4,23 @@ import java.util.Scanner;
 public class PayFineUI {
 
 
-	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };	//Changed the enum variable name to correct order (UiState)
 
 	private PayFineControl CoNtRoL;
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UiState state;	//Changed the instance name to right order(state)
 
 	
 	public PayFineUI(PayFineControl control) {
 		this.CoNtRoL = control;
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
+		state = UiState.INITIALISED;
 		control.Set_UI(this);
 	}
 	
 	
-	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+	public void Set_State(UiState state) {
+		this.state = state;
 	}
 
 
@@ -29,8 +29,8 @@ public class PayFineUI {
 		
 		while (true) {
 			
-			switch (StAtE) {
-			
+			switch (state) {	//Changed the variable name to right order(state)
+
 			case READY:
 				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
 				if (Mem_Str.length() == 0) {
@@ -74,7 +74,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
 		}		

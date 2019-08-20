@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class FixBookUI {
 
-	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };	//Changed the enum variable name (UiState)
+	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };	//Changed the enum variable name to correct order (UiState)
 
 	private FixBookControl control;	//Changed the instance name to right order(control)
 	private Scanner input;
