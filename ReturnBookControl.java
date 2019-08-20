@@ -38,17 +38,17 @@ public class ReturnBookControl {
 			userInterface.display("Book has not been borrowed");
 			return;
 		}		
-		CurrENT_loan = library.getLoanByBookId(bookId);	//Changed method name to verb starting with lowercase and in camelBack
-		double Over_Due_Fine = 0.0;
-		if (CurrENT_loan.isOverDue()) { //Changed method name to verb starting with lowercase and in camelBack
-			Over_Due_Fine = library.calculateOverDueFine(CurrENT_loan); //Changed method name to verb starting with lowercase and in camelBack
+		currentLoan = library.getLoanByBookId(bookId);	//Changed method name to verb starting with lowercase and in camelBack
+		double overDueFine = 0.0; //Changed variable name to a meaningful word
+		if (currentLoan.isOverDue()) { //Changed method name to verb starting with lowercase and in camelBack
+			overDueFine = library.calculateOverDueFine(currentLoan); //Changed method name to verb starting with lowercase and in camelBack
 		}
 		userInterface.display("Inspecting");
 		userInterface.display(CUR_book.toString());
-		userInterface.display(CurrENT_loan.toString());
+		userInterface.display(currentLoan.toString());
 		
-		if (CurrENT_loan.overDue()) { //Changed method name to verb starting with lowercase and in camelBack
-			userInterface.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
+		if (currentLoan.overDue()) { //Changed method name to verb starting with lowercase and in camelBack
+			userInterface.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
 		userInterface.setState(ReturnBookUI.UI_STATE.INSPECTING);
 		state = ControlState.INSPECTING;		
@@ -67,8 +67,8 @@ public class ReturnBookControl {
 		if (!state.equals(ControlState.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
-		library.dischargeLoan(CurrENT_loan, isDamaged); //Changed method name to verb starting with lowercase and in camelBack
-		CurrENT_loan = null;
+		library.dischargeLoan(currentLoan, isDamaged); //Changed method name to verb starting with lowercase and in camelBack
+		currentLoan = null; //Changed variable name to a meaningful word
 		userInterface.setState(ReturnBookUI.UI_STATE.READY);
 		state = ControlState.READY;				
 	}
