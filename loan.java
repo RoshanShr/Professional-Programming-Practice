@@ -5,7 +5,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class Loan implements Serializable { // Changed class name to uppercase
 	
-	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED }; // Changed enum name to LoanState
+	public static enum LoanState { CURRENT, OVERDUE, DISCHARGED }; // Changed enum name to LoanState
 	
 	private int loanId; // Changed variable name to loanId
 	private Book book; // Change class and instance of Book class
@@ -72,7 +72,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 
 
 	public void discharge() { //Changed the function to discharge
-		state = LOAN_STATE.DISCHARGED;		
+		state = LoanState.DISCHARGED;		
 	}
 
 }
