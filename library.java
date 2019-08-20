@@ -14,20 +14,20 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class library implements Serializable {
+public class Library implements Serializable { //Class name must start with capital letter
 	
-	private static final String libraryFile = "library.obj";
-	private static final int loanLimit = 2;
-	private static final int loanPeriod = 2;
-	private static final double finePerDay = 1.0;
-	private static final double maxFinesOwed = 1.0;
-	private static final double damageFee = 2.0;
+	private static final String LIBRARY_FILE = "library.obj"; //Constants must be all upper case and underscore separated
+	private static final int LOAN_LIMIT = 2; //Constants must be all upper case and underscore separated
+	private static final int LOAN_PERIOD = 2; //Constants must be all upper case and underscore separated
+	private static final double FINE_PER_DAY = 1.0; //Constants must be all upper case and underscore separated
+	private static final double MAX_FINES_OWED = 1.0; //Constants must be all upper case and underscore separated
+	private static final double DAMAGE_FREE = 2.0; //Constants must be all upper case and underscore separated
 	
 	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private int bookId; //Variable name must start with lower case and be in camelBack.
+	private int memberId; //Variable name must start with lower case and be in camelBack.
+	private int loanId; //Variable name must start with lower case and be in camelBack.
+	private Date loanDate; //Variable name must start with lower case and be in camelBack.
 	
 	private Map<Integer, book> CATALOG;
 	private Map<Integer, member> MEMBERS;

@@ -1,16 +1,16 @@
 public class ReturnBookControl {
 
 	private ReturnBookUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
+	private enum ControlState { INITIALISED, READY, INSPECTING }; //enum name should start with uppercase and be in CamelBack
 	private CONTROL_STATE sTaTe;
 	
-	private library lIbRaRy;
-	private loan CurrENT_loan;
+	private Library library; //Class name should start with uppercase and variable name should start with lowercase and be in camelBack
+	private Loan currentLoan; //Class name should start with uppercase and variable name should start with lowercase and be in camelBack
 	
 
 	public ReturnBookControl() {
-		this.lIbRaRy = lIbRaRy.INSTANCE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE(); //Variable name should start with lowercase and be in camelBack
+		state = CONTROL_STATE.INITIALISED; //Variable name should start with lowercase and be in camelBack
 	}
 	
 	
