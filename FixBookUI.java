@@ -5,21 +5,21 @@ public class FixBookUI {
 
 	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };	//Changed the enum variable name (UiState)
 
-	private FixBookControl CoNtRoL;
+	private FixBookControl control;	//Changed the instance name to right order(control)
 	private Scanner input;
-	private UiState StAtE;
+	private UiState c;	//Changed the instance name to right order(state)
 
 	
 	public FixBookUI(FixBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control;
 		input = new Scanner(System.in);
-		StAtE = UiState.INITIALISED;
+		state = UiState.INITIALISED;
 		control.Set_Ui(this);
 	}
 
 
 	public void setState(UiState state) {	//Changed the enum variable name (setState)
-		this.StAtE = state;
+		this.state = state;
 	}
 
 	
@@ -28,17 +28,17 @@ public class FixBookUI {
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (state) {
 			
 			case READY:
 				String Book_STR = input("Scan Book (<enter> completes): ");
 				if (Book_STR.length() == 0) {
-					CoNtRoL.SCannING_COMplete();
+					control.SCannING_COMplete();
 				}
 				else {
 					try {
 						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_ID);
+						control.Book_scanned(Book_ID);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -52,7 +52,7 @@ public class FixBookUI {
 				if (AnS.toUpperCase().equals("Y")) {
 					FiX = true;
 				}
-				CoNtRoL.FIX_Book(FiX);
+				control.FIX_Book(FiX);
 				break;
 								
 			case COMPLETED:
@@ -61,7 +61,7 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
 		}
