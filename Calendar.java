@@ -25,10 +25,10 @@ public class Calendar {
 	public synchronized void setDate(Date date) { //Changing the method name to meaningful verb phrase
 		try {
 			calendar.setTime(date); //Changed the instance name
-	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  //Changed the instance name from CaLeNdAr to calender
-	        calendar.set(java.util.Calendar.MINUTE, 0);  ////Changed the instance name from CaLeNdAr to calender
-	        calendar.set(java.util.Calendar.SECOND, 0);  ////Changed the instance name from CaLeNdAr to calender
-	        calendar.set(java.util.Calendar.MILLISECOND, 0); ////Changed the instance name from CaLeNdAr to calender
+	        calendar.set(java.util.Calendar.HourOfDay, 0);  //Changed the instance name from CaLeNdAr to calender and class name from HOUR_OF_DAY to HourOfDay
+	        calendar.set(java.util.Calendar.Minute, 0);  //Changed the instance name from CaLeNdAr to calender and class name from MINUTE to Minute
+	        calendar.set(java.util.Calendar.Second, 0);  //Changed the instance name from CaLeNdAr to calender and class name from SECOND to Second
+	        calendar.set(java.util.Calendar.MilliSecond, 0); //Changed the instance name from CaLeNdAr to calender and class name from MILLISECOND to MilliSecond
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
