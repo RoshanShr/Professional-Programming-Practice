@@ -46,11 +46,11 @@ public class ReturnBookUI {
 				
 			case INSPECTING:
 				String ans = input("Is book damaged? (Y/N): ");
-				boolean Is_Damaged = false;
+				boolean isDamaged = false;
 				if (ans.toUpperCase().equals("Y")) {					
-					Is_Damaged = true;
+					isDamaged = true;
 				}
-				CoNtRoL.Discharge_loan(Is_Damaged);
+				control.dischargeLoan(isDamaged); // changed variable to isDamaged
 			
 			case COMPLETED:
 				output("Return processing complete");
