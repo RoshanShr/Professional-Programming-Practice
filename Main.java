@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static library LIB;
-	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+	private static Scanner in; //Changed the instance IN to in
+	private static library lib; //Changed the instance LIB to lib
+	private static String menu; //Changed the instance MENU to menu
+	private static Calendar cal; //Changed the instance CAL to cal
+	private static SimpleDateFormat sdf; //Changed the instance SDF to sdf
 	
 	
-	private static String Get_menu() {
+	private static String getMenu() { //changed the method Get-menu to getMenu
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\nLibrary Main Menu\n\n")
@@ -39,68 +39,68 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.INSTANCE();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			in = new Scanner(System.in);
+			lib = library.getInstance(); //Method INSTANCE changed to getInstance
+			cal = Calendar.getInstance();
+			sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (member m : LIB.MEMBERS()) {
+			for (member m : lib.getMembers()) { //Method name changed from MEMBERS to getMembers
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.BOOKS()) {
+			for (book b : lib.getBooks()) { //Method name changed from BOOKS to getBooks
 				output(b);
 			}
 						
-			MENU = Get_menu();
+			menu = getMenu();
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(CAL.Date()));
-				String c = input(MENU);
+				output("\n" + sdf.format(cal.Date()));
+				String c = input(menu);
 				
 				switch (c.toUpperCase()) {
 				
 				case "M": 
-					ADD_MEMBER();
+					addMember(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "LM": 
-					MEMBERS();
+					getMembers(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "B": 
-					ADD_BOOK();
+					addBook(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "LB": 
-					BOOKS();
+					getBooks(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "FB": 
-					FIX_BOOKS();
+					fixBooks(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "L": 
-					BORROW_BOOK();
+					borrowBook(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "R": 
-					RETURN_BOOK();
+					returnBook(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS();
+					currentLoans(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "P": 
-					FINES();
+					getFines(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "T": 
-					INCREMENT_DATE();
+					incrementDate(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "Q": 
@@ -112,7 +112,7 @@ public class Main {
 					break;
 				}
 				
-				library.SAVE();
+				library.getSave(); //Method SAVE changed to getSave
 			}			
 		} catch (RuntimeException e) {
 			output(e);
@@ -121,31 +121,31 @@ public class Main {
 	}	
 
 		private static void fines() { //method name must start with lower case
-		new PayFineUI(new PayFineControl()).RuN();		
+		new PayFineUI(new payFineControl()).getRun();		//method name must start with lowercase and be in camelBack
 	}
 
 
 	private static void currentLoans() { //method name must start with lowercase and be in camelBack
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (loan loan : lib.currentLoans()) { //method name must start with lowercase and be in camelBack
 			output(loan + "\n");
 		}		
 	}
 
 
 
-	private static void books() { //method name must start with lower case
+	private static void getBbooks() { //method name must start with lowercase and camelBack
 		output("");
-		for (book book : LIB.books()) {
+		for (book book : lib.getBooks()) {
 			output(book + "\n");
 		}		
 	}
 
 
 
-	private static void members() { //method name must start with lower case
+	private static void getMmembers() { //method name must start with lowercase and be in camelBack
 		output("");
-		for (member member : LIB.MEMBERS()) {
+		for (member member : lib.getMembers()) { //Method name changed from MEMBERS to getMembers
 			output(member + "\n");
 		}		
 	}
@@ -153,26 +153,26 @@ public class Main {
 
 
 	private static void borrowBook() { //method name must start with lowercase and be in camelBack
-		new BorrowBookUI(new BorrowBookControl()).run();		
+		new BorrowBookUI(new BorrowBookControl()).getRun();		
 	}
 
 
 	private static void returnBook() { //method name must start with lowercase and be in camelBack
-		new ReturnBookUI(new ReturnBookControl()).RuN();		
+		new ReturnBookUI(new ReturnBookControl()).getRun();		
 	}
 
 
 	private static void fixBooks() { //method name must start with lowercase and be in camelBack
-		new FixBookUI(new FixBookControl()).RuN();		
+		new FixBookUI(new FixBookControl()).getRun();		
 	}
 
 
 	private static void incrementDate() { //method name must start with lowercase and be in camelBack
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
-			output(SDF.format(CAL.Date()));
+			cal.incrementDate(days);
+			lib.checkCurrentLoans();
+			output(sdf.format(cal.Date()));
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid number of days\n");
@@ -182,22 +182,22 @@ public class Main {
 
 	private static void addBook() { //method name must start with lowercase and be in camelBack
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C);
-		output("\n" + B + "\n");
+		String enterName = input("Enter author: "); //Variable name changed to meaningful name
+		String enterTitle  = input("Enter title: "); //Variable name changed to meaningful name
+		String enterNumber = input("Enter call number: "); //Variable name changed to meaningful name
+		Book book = lib.addBook(enterName, enterTitle, enterNumber); //method name must start with lowercase and be in camelBack and class name must start from uppercase
+		output("\n" + book + "\n");
 		
 	}
 
 	
 	private static void addMember() { //method name must start with lowercase and be in camelBack
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = LIB.Add_mem(LN, FN, EM, PN);
+			String lastName = input("Enter last name: "); //Variable name must be in lowercase and in camelBack
+			String firstName  = input("Enter first name: "); //Variable name must be in lowercase and in camelBack
+			String eMail = input("Enter email: "); //Variable name must be in lowercase and in camelBack
+			int phoneNumber = Integer.valueOf(input("Enter phone number: ")).intValue(); //Variable name must be in lowercase and in camelBack
+			member M = lib.Add_mem(lastName, firstName, eMail, phoneNumber); //Variable name must be in lowercase and in camelBack
 			output("\n" + M + "\n");
 			
 		} catch (NumberFormatException e) {
@@ -209,7 +209,7 @@ public class Main {
 
 	private static String input(String prompt) {
 		System.out.print(prompt);
-		return IN.nextLine();
+		return in.nextLine();
 	}
 	
 	
