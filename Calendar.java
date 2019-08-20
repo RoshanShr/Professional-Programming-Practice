@@ -37,9 +37,9 @@ public class Calendar {
 	}
 	public synchronized Date date() { //Changing the method name to meaningful verb phrase
 		try {
-	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        calendar.set(java.util.Calendar.SECOND, 0);  
-	        calendar.set(java.util.Calendar.MILLISECOND, 0); 
+			calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+			calendar.set(java.util.Calendar.SECOND, 0);  
+			calendar.set(java.util.Calendar.MILLISECOND, 0); 
 			return calendar.getTime();
 		}
 		catch (Exception e) {
