@@ -124,8 +124,8 @@ public class Library implements Serializable { //Class name must start with capi
 
 
 	public Member Add_mem(String lastName, String firstName, String email, int phoneNo) { //Class name member changed to Member
-		Member member = new member(lastName, firstName, email, phoneNo, NextMID());
-		MEMBERS.put(member.GeT_ID(), member);		
+		Member member = new member(lastName, firstName, email, phoneNo, nextMid());
+		MEMBERS.put(member.GeT_ID(), member);	//method GET_ID changed to getID	
 		return member;
 	}
 
