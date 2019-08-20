@@ -8,7 +8,7 @@ public class PayFineUI {
 
 	private PayFineControl control;	//Changed the instance name to right order(control)
 	private Scanner input;
-	private UiState state;	//Changed the instance name to right order(state)
+	private UiState state;	//Changed the instance name to right format(state)
 
 	
 	public PayFineUI(PayFineControl control) {
