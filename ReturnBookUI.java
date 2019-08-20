@@ -3,18 +3,18 @@ import java.util.Scanner;
 
 public class ReturnBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
+	public static enum UIState { INITIALISED, READY, INSPECTING, COMPLETED }; //Changed the enum to UIState
 
-	private ReturnBookControl CoNtRoL;
+	private ReturnBookControl control; // Changed variable to control
 	private Scanner input;
-	private UI_STATE StATe;
+	private UIState state;
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control;
 		input = new Scanner(System.in);
-		StATe = UI_STATE.INITIALISED;
-		control.Set_UI(this);
+		state = UIState.INITIALISED;
+		control.setUI(this); // Changed method to setUI
 	}
 
 

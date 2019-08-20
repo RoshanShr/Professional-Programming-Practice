@@ -1,7 +1,7 @@
 public class PayFineControl {
 	
 	private PayFineUI ui; // changes the instance of PayFineUI to ui
-	private enum ControlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; //Changed the enusm to ControlState
+	private enum ControlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; //Changed the enum to ControlState
 	private ControlState state; //Changed variable to state
 	
 	private Library library; //Changed instance to library of Library class
