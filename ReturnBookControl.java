@@ -9,23 +9,23 @@ public class ReturnBookControl {
 	
 
 	public ReturnBookControl() {
-		this.library = library.INSTANCE(); //Variable name should start with lowercase and be in camelBack
-		state = CONTROL_STATE.INITIALISED; //Variable name should start with lowercase and be in camelBack
+		this.library = library.getInstance(); //Variable name should start with lowercase and be in camelBack and Changed method name to verb starting with lowercase and in camelBack
+		state = ControlState.getInitialized; //Variable name should start with lowercase and be in camelBack and Changed method name to verb starting with lowercase and in camelBack
 	}
 	
 	
-	public void Set_UI(ReturnBookUI userInterface) {
-		if (!sTaTe.equals(CONTROL_STATE.INITIALISED)) {
+	public void setUserInterface(ReturnBookUI userInterface) { //Changed method name to verb starting with lowercase and in camelBack
+		if (!sTaTe.equals(ControlState.getInitialized)) {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.userInterface = userInterface;
-		userInterface.Set_State(ReturnBookUI.UI_STATE.READY);
-		sTaTe = CONTROL_STATE.READY;		
+		userInterface.setState(ReturnBookUI.UI_STATE.READY); //Changed method name to verb starting with lowercase and in camelBack
+		sTaTe = ControlState.READY;		
 	}
 
 
-	public void Book_scanned(int Book_ID) {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+	public void getBookScanned(int Book_ID) { //Changed method name to verb starting with lowercase and in camelBack
+		if (!sTaTe.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
 		book CUR_book = lIbRaRy.Book(Book_ID);
@@ -38,9 +38,9 @@ public class ReturnBookControl {
 			userInterface.display("Book has not been borrowed");
 			return;
 		}		
-		CurrENT_loan = lIbRaRy.LOAN_BY_BOOK_ID(Book_ID);	
+		CurrENT_loan = lIbRaRy.getLoanByBookId(Book_ID);	//Changed method name to verb starting with lowercase and in camelBack
 		double Over_Due_Fine = 0.0;
-		if (CurrENT_loan.OVer_Due()) {
+		if (CurrENT_loan.isOverDue()) { //Changed method name to verb starting with lowercase and in camelBack
 			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(CurrENT_loan);
 		}
 		userInterface.display("Inspecting");
@@ -50,27 +50,27 @@ public class ReturnBookControl {
 		if (CurrENT_loan.OVer_Due()) {
 			userInterface.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
 		}
-		userInterface.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
-		sTaTe = CONTROL_STATE.INSPECTING;		
+		userInterface.setState(ReturnBookUI.UI_STATE.INSPECTING);
+		sTaTe = ControlState.INSPECTING;		
 	}
 
 
 	public void Scanning_Complete() {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+		if (!sTaTe.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
-		userInterface.Set_State(ReturnBookUI.UI_STATE.COMPLETED);		
+		userInterface.setState(ReturnBookUI.UI_STATE.COMPLETED);		
 	}
 
 
 	public void Discharge_loan(boolean isDamaged) {
-		if (!sTaTe.equals(CONTROL_STATE.INSPECTING)) {
+		if (!sTaTe.equals(ControlState.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
 		lIbRaRy.Discharge_loan(CurrENT_loan, isDamaged);
 		CurrENT_loan = null;
-		userInterface.Set_State(ReturnBookUI.UI_STATE.READY);
-		sTaTe = CONTROL_STATE.READY;				
+		userInterface.setState(ReturnBookUI.UI_STATE.READY);
+		sTaTe = ControlState.READY;				
 	}
 
 
