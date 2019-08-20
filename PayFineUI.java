@@ -19,12 +19,12 @@ public class PayFineUI {
 	}
 	
 	
-	public void Set_State(UiState state) {
+	public void setState(UiState state) {	//Changed the method name to right order(setState)
 		this.state = state;
 	}
 
 
-	public void RuN() {
+	public void run() {	//Changed the method name to right order(run)
 		output("Pay Fine Use Case UI\n");
 		
 		while (true) {
@@ -92,7 +92,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void display(Object object) {	//Changed the method name to right order(display)
 		output(object);
 	}
 

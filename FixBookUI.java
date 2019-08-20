@@ -18,12 +18,12 @@ public class FixBookUI {
 	}
 
 
-	public void setState(UiState state) {	//Changed the variable name to right order(setState)
+	public void setState(UiState state) {	//Changed the method name to right order(setState)
 		this.state = state;
 	}
 
 	
-	public void run() {	//Changed the enum variable name (run)
+	public void run() {	//Changed the method name to right order(run)
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
