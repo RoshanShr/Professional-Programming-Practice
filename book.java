@@ -2,7 +2,7 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable {	//Fixed the order of class name
 	
 	private String TITLE;
 	private String AUTHOR;
@@ -13,7 +13,7 @@ public class book implements Serializable {
 	private STATE State;
 	
 	
-	public book(String author, String title, String callNo, int id) {
+	public Book(String author, String title, String callNo, int id) {	//Fixed the order of constructor name
 		this.AUTHOR = author;
 		this.TITLE = title;
 		this.CALLNO = callNo;
