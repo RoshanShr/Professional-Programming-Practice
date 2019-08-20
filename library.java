@@ -109,17 +109,17 @@ public class Library implements Serializable { //Class name must start with capi
 
 	
 	public List<member> MEMBERS() {		
-		return new ArrayList<member>(MEMBERS.values()); 
+		return new ArrayList<member>(MEMBERS.getValues()); //Method name must be a verb
 	}
 
 
 	public List<book> BOOKS() {		
-		return new ArrayList<book>(CATALOG.values()); 
+		return new ArrayList<book>(CATALOG.getValues()); //Method name must be a verb
 	}
 
 
 	public List<loan> CurrentLoans() {
-		return new ArrayList<loan>(CURRENT_LOANS.values());
+		return new ArrayList<loan>(CURRENT_LOANS.getValues()); //Method name must be a verb
 	}
 
 
