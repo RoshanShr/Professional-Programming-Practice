@@ -3,40 +3,40 @@ import java.util.Scanner;
 
 public class ReturnBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
+	public static enum UIState { INITIALISED, READY, INSPECTING, COMPLETED }; //Changed the enum to UIState
 
-	private ReturnBookControl CoNtRoL;
+	private ReturnBookControl control; // Changed variable to control
 	private Scanner input;
-	private UI_STATE StATe;
+	private UIState state;
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control;
 		input = new Scanner(System.in);
-		StATe = UI_STATE.INITIALISED;
-		control.Set_UI(this);
+		state = UIState.INITIALISED;
+		control.setUI(this); // Changed method to setUI
 	}
 
 
-	public void RuN() {		
+	public void run() {		// Changed method to run
 		output("Return Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StATe) {
+			switch (state) { //Changed to state
 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
-					CoNtRoL.Scanning_Complete();
+				String book = input("Scan Book (<enter> completes): ");
+				if (book.length() == 0) {
+					control.scanningComplete(); // Changed method to scanningComplete
 				}
 				else {
 					try {
-						int Book_Id = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_Id);
+						int bookId = Integer.valueOf(book).intValue(); 
+						control.bookScanned(bookId); // Changed method to bookScanned
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -46,11 +46,11 @@ public class ReturnBookUI {
 				
 			case INSPECTING:
 				String ans = input("Is book damaged? (Y/N): ");
-				boolean Is_Damaged = false;
+				boolean isDamaged = false;
 				if (ans.toUpperCase().equals("Y")) {					
-					Is_Damaged = true;
+					isDamaged = true;
 				}
-				CoNtRoL.Discharge_loan(Is_Damaged);
+				control.dischargeLoan(isDamaged); // changed variable to isDamaged
 			
 			case COMPLETED:
 				output("Return processing complete");
@@ -58,7 +58,7 @@ public class ReturnBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);			
 			}
 		}
 	}
@@ -79,8 +79,8 @@ public class ReturnBookUI {
 		output(object);
 	}
 	
-	public void Set_State(UI_STATE state) {
-		this.StATe = state;
+	public void setState(UIState state) { // changed method to setState
+		this.state = state;
 	}
 
 	
