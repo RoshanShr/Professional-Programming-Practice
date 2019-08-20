@@ -4,13 +4,14 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Book implements Serializable {	//Fixed the order of class name
 	
-	private String TITLE;
-	private String AUTHOR;
-	private String CALLNO;
-	private int ID;
+	//Changed the following variable names to right order
+	private String title;
+	private String athor;
+	private String callNo;
+	private int id;
 	
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private STATE State;
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };	//Change the enum variable to right format(State)
+	private State State;
 	
 	
 	public Book(String author, String title, String callNo, int id) {	//Fixed the order of constructor name
