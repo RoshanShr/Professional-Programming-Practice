@@ -24,7 +24,7 @@ public class PayFineUI {
 	}
 
 
-	public void run() {	//Changed the method name to right order(run)
+	public void run() {	//Changed the method name to right format(run)
 		output("Pay Fine Use Case UI\n");
 		
 		while (true) {
