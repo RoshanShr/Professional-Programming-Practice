@@ -24,7 +24,7 @@ public class Calendar {
 	
 	public synchronized void setDate(Date date) { //Changing the method name to meaningful verb phrase
 		try {
-			calendar.setTime(date); //Changed the instance name
+		    calendar.setTime(date); //Changed the instance name
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
 	        calendar.set(java.util.Calendar.MINUTE, 0); 
 	        calendar.set(java.util.Calendar.SECOND, 0);  
@@ -49,9 +49,9 @@ public class Calendar {
 
 	public synchronized Date dueDate(int loanPeriod) { //Changing the method name to meaningful verb phrase
 		Date now = Date(); //Changed the variable NoW to now
-		 calendar.add(java.util.Calendar.DATE, loanPeriod); 
+		calendar.add(java.util.Calendar.DATE, loanPeriod); 
 		Date duedate =  calendar.getTime(); 
-		 calendar.setTime(now); //Changed the instance name from CaLeNdAr to calender and the varibale NoW to now
+		calendar.setTime(now); //Changed the instance name from CaLeNdAr to calender and the varibale NoW to now
 		return dueDate; //Changed the variable DuEdAtE to dueDate
 	}
 	
