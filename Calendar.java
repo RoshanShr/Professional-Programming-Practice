@@ -19,7 +19,7 @@ public class Calendar {
 	}
 	
 	public void incrementDate(int days) {
-		calendar.add(java.util.Calendar.DATE, days); //Changed the instance name		
+		calendar.add(java.util.Calendar.Date, days); //Changed the instance name Calender and the class DATE to Date	
 	}
 	
 	public synchronized void setDate(Date date) { //Changing the method name to meaningful verb phrase
