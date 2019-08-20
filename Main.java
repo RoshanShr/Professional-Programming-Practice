@@ -11,7 +11,7 @@ public class Main {
 	private static SimpleDateFormat sdf; //Changed the instance SDF to sdf
 	
 	
-	private static String Get_menu() {
+	private static String Get_menu() { //changed the method Get-menu to getMenu
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\nLibrary Main Menu\n\n")
@@ -52,7 +52,7 @@ public class Main {
 				output(b);
 			}
 						
-			menu = Get_menu();
+			menu = getMenu();
 			
 			boolean e = false;
 			
