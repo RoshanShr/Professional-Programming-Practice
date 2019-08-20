@@ -55,7 +55,7 @@ public class ReturnBookControl {
 	}
 
 
-	public void ccanningComplete() { //Changed method name to verb starting with lowercase and in camelBack
+	public void scanningComplete() { //Changed method name to verb starting with lowercase and in camelBack
 		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
