@@ -5,7 +5,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class Loan implements Serializable { // Changed class name to uppercase
 	
-	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED }; // Changed enum name to LoanState
+	public static enum LoanState { CURRENT, OVERDUE, DISCHARGED }; // Changed enum name to LoanState
 	
 	private int loanId; // Changed variable name to loanId
 	private Book book; // Change class and instance of Book class
@@ -25,7 +25,7 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	
 	public void checkOverDue() {
 	    if (state == LoanState.CURRENT &&
-			Calendar.INSTANCE().Date().after(date)) {
+			Calendar.getInstance().getDate().after(date)) { // Changed method to getInstance and getDate
 			this.state = LoanState.overDue;			
 		}
 	}
@@ -61,18 +61,18 @@ public class Loan implements Serializable { // Changed class name to uppercase
 	}
 
 
-	public member getMember() { // Get getMember from the Member Class
+	public Member getMember() { // Get getMember from the Member Class
 		return member;
 	}
 
 
-	public book getBook() { // Get getBook from the Book Class
+	public Book getBook() { // Get getBook from the Book Class
 		return book;
 	}
 
 
 	public void discharge() { //Changed the function to discharge
-		state = LOAN_STATE.DISCHARGED;		
+		state = LoanState.DISCHARGED;		
 	}
 
 }
