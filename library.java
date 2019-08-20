@@ -55,7 +55,7 @@ public class Library implements Serializable { //Class name must start with capi
 				try (ObjectInputStream lif = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
 					self = (Library) lif.readObject(); //Changed object LiF to lif
-					Calendar.getInstance().setDate(self.LOAN_DATE); //Method name should be a verb and start with lowercase and be in camelback
+					Calendar.getInstance().setDate(self.loanDate); //Method name should be a verb and start with lowercase and be in camelback
 					lif.close();
 				}
 				catch (Exception e) {
@@ -70,7 +70,7 @@ public class Library implements Serializable { //Class name must start with capi
 	
 	public static synchronized void isSave() { //Method name should be a verb and start with lowercase and be in camelback
 		if (self != null) {
-			self.LOAN_DATE = Calendar.getInstance().Date();
+			self.loanDate = Calendar.getInstance().Date(); //Variable name LOAN_DATE changed to loanDate
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
 				LoF.writeObject(self);
 				LoF.flush();
