@@ -9,7 +9,7 @@ public class FixBookControl {
 
 
 	public FixBookControl() {
-		this.library = library.INSTANCE();
+		this.library = library.getInstance(); // Changed the method to getInstance
 		state = Controlstate.INITIALISED;
 	}
 	
@@ -34,12 +34,12 @@ public class FixBookControl {
 			ui.display("Invalid bookId");
 			return;
 		}
-		if (!book.IS_Damaged()) {
+		if (!book.isDamaged()) { // Changed method to isDamaged
 			ui.display("Book has not been damaged");
 			return;
 		}
 		ui.display(book.toString());
-		ui.Set_state(FixBookUI.UiState.FIXING);
+		ui.setState(FixBookUI.UiState.FIXING); //Changed method to setState
 		state = Controlstate.FIXING;		
 	}
 
