@@ -24,11 +24,11 @@ public class ReturnBookControl {
 	}
 
 
-	public void getBookScanned(int Book_ID) { //Changed method name to verb starting with lowercase and in camelBack
+	public void getBookScanned(int bookId) { //Changed method name to verb starting with lowercase and in camelBack
 		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
-		book CUR_book = library.Book(Book_ID); //Changed instance lIbRaRy to library
+		book CUR_book = library.Book(bookId); //Changed instance lIbRaRy to library and changed variable name BOOK_ID to bookId
 		
 		if (CUR_book == null) {
 			userInterface.display("Invalid Book Id");
@@ -38,7 +38,7 @@ public class ReturnBookControl {
 			userInterface.display("Book has not been borrowed");
 			return;
 		}		
-		CurrENT_loan = library.getLoanByBookId(Book_ID);	//Changed method name to verb starting with lowercase and in camelBack
+		CurrENT_loan = library.getLoanByBookId(bookId);	//Changed method name to verb starting with lowercase and in camelBack
 		double Over_Due_Fine = 0.0;
 		if (CurrENT_loan.isOverDue()) { //Changed method name to verb starting with lowercase and in camelBack
 			Over_Due_Fine = library.CalculateOverDueFine(CurrENT_loan);
