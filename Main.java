@@ -58,49 +58,49 @@ public class Main {
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(cal.Date()));
+				output("\n" + sdf.format(cal.Date()));
 				String c = input(menu);
 				
 				switch (c.toUpperCase()) {
 				
 				case "M": 
-					ADD_MEMBER();
+					addMember(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "LM": 
-					MEMBERS();
+					getMembers(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "B": 
-					ADD_BOOK();
+					addBook(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "LB": 
-					BOOKS();
+					getBooks(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "FB": 
-					FIX_BOOKS();
+					fixBooks(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "L": 
-					BORROW_BOOK();
+					borrowBook(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "R": 
-					RETURN_BOOK();
+					returnBook(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS();
+					currentLoans(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "P": 
-					FINES();
+					getFines(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "T": 
-					INCREMENT_DATE();
+					incrementDate(); //Method name must be in lowercase and camelBack
 					break;
 					
 				case "Q": 
