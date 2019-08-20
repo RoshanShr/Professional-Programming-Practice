@@ -3,7 +3,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Calendar {
 	
-	private static Calendar SeLf;
+	private static Calendar self; // local variable Self changed to self by Arjun @3:17PM
 	private static java.util.Calendar calendar; //Changed the instance name
 	
 	
@@ -12,10 +12,10 @@ public class Calendar {
 	}
 	
 	public static Calendar INSTANCE() {
-		if (SeLf == null) {
-			SeLf = new Calendar();
+		if (self == null) {
+			self = new Calendar();
 		}
-		return SeLf;
+		return self;
 	}
 	
 	public void incrementDate(int days) {
