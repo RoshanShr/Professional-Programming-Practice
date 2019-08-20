@@ -11,7 +11,7 @@ public class Main {
 	private static SimpleDateFormat sdf; //Changed the instance SDF to sdf
 	
 	
-	private static String Get_menu() { //changed the method Get-menu to getMenu
+	private static String getMenu() { //changed the method Get-menu to getMenu
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\nLibrary Main Menu\n\n")
@@ -40,8 +40,8 @@ public class Main {
 	public static void main(String[] args) {		
 		try {			
 			in = new Scanner(System.in);
-			lib = library.INSTANCE();
-			cal = Calendar.INSTANCE();
+			lib = library.getInstance(); //Method INSTANCE changed to getInstance
+			cal = Calendar.getInstance();
 			sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 			for (member m : lib.MEMBERS()) {
