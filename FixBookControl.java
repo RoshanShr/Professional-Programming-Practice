@@ -44,12 +44,12 @@ public class FixBookControl {
 	}
 
 
-	public void FIX_Book(boolean MUST_fix) {
+	public void fixBook(boolean MUST_fix) { // Changed method to fixBook
 		if (!state.equals(Controlstate.FIXING)) {
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
 		if (MUST_fix) {
-			library.Repair_BOOK(book);
+			library.repairBook(book); // Changed method to repairBook
 		}
 		book = null;
 		ui.Set_state(FixBookUI.UI_state.READY);
