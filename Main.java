@@ -44,7 +44,7 @@ public class Main {
 			cal = Calendar.getInstance();
 			sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (member m : lib.MEMBERS()) {
+			for (member m : lib.getMembers()) { //Method name changed from MEMBERS to getMembers
 				output(m);
 			}
 			output(" ");
@@ -58,7 +58,7 @@ public class Main {
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(CAL.Date()));
+				output("\n" + SDF.format(cal.Date()));
 				String c = input(menu);
 				
 				switch (c.toUpperCase()) {
@@ -143,9 +143,9 @@ public class Main {
 
 
 
-	private static void members() { //method name must start with lower case
+	private static void getMmembers() { //method name must start with lowercase and be in camelBack
 		output("");
-		for (member member : lib.MEMBERS()) {
+		for (member member : lib.getMembers()) { //Method name changed from MEMBERS to getMembers
 			output(member + "\n");
 		}		
 	}
