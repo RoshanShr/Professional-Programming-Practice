@@ -1,8 +1,8 @@
 public class PayFineControl {
 	
-	private PayFineUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-	private CONTROL_STATE StAtE;
+	private PayFineUI ui; // changes the instance of PayFineUI to ui
+	private enum ControlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; //Changed the enusm to ControlState
+	private ControlState state; //Changed variable to state
 	
 	private library LiBrArY;
 	private member MeMbEr;
@@ -18,7 +18,7 @@ public class PayFineControl {
 		if (!StAtE.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.Ui = ui;
+		this.ui = ui;
 		ui.Set_State(PayFineUI.UI_STATE.READY);
 		StAtE = CONTROL_STATE.READY;		
 	}
@@ -31,17 +31,17 @@ public class PayFineControl {
 		MeMbEr = LiBrArY.MEMBER(memberId);
 		
 		if (MeMbEr == null) {
-			Ui.DiSplAY("Invalid Member Id");
+			ui.DiSplAY("Invalid Member Id");
 			return;
 		}
-		Ui.DiSplAY(MeMbEr.toString());
-		Ui.Set_State(PayFineUI.UI_STATE.PAYING);
+		ui.DiSplAY(MeMbEr.toString());
+		ui.Set_State(PayFineUI.UI_STATE.PAYING);
 		StAtE = CONTROL_STATE.PAYING;
 	}
 	
 	
 	public void CaNcEl() {
-		Ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
+		ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
 		StAtE = CONTROL_STATE.CANCELLED;
 	}
 
@@ -52,10 +52,10 @@ public class PayFineControl {
 		}	
 		double ChAnGe = MeMbEr.Pay_Fine(AmOuNt);
 		if (ChAnGe > 0) {
-			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
+			ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
 		}
-		Ui.DiSplAY(MeMbEr.toString());
-		Ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
+		ui.DiSplAY(MeMbEr.toString());
+		ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
 		StAtE = CONTROL_STATE.COMPLETED;
 		return ChAnGe;
 	}
