@@ -29,7 +29,7 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void Set_State(UI_STATE STATE) {
+	public void setState(UI_STATE STATE) {	//Change method name to setState
 		this.StaTe = STATE;
 	}
 
@@ -109,7 +109,7 @@ public class BorrowBookUI {
 	}
 
 
-	public void Display(Object object) {
+	public void display(Object object) {	//Changed method name to display
 		output(object);		
 	}
 
