@@ -47,13 +47,13 @@ public class BorrowBookUI {
 
 				
 			case READY:
-				String memberDetails = input("Swipe member card (press <enter> to cancel): ");	//Changed variable name to correct order(memberDetails)
+				String memberDetails = input("Swipe member card (press <enter> to cancel): ");	//Changed variable name to right order(memberDetails)
 				if (memberDetails.length() == 0) {
 					CONTROL.cancel();
 					break;
 				}
 				try {
-					int memberId = Integer.valueOf(memberDetails).intValue();	//Changed variable name to correct order(memberId)
+					int memberId = Integer.valueOf(memberDetails).intValue();	//Changed variable name to right order(memberId)
 					CONTROL.Swiped(memberId);
 				}
 				catch (NumberFormatException e) {
