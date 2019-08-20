@@ -15,17 +15,17 @@ public class ReturnBookControl {
 	
 	
 	public void setUserInterface(ReturnBookUI userInterface) { //Changed method name to verb starting with lowercase and in camelBack
-		if (!sTaTe.equals(ControlState.getInitialized)) {
+		if (!state.equals(ControlState.getInitialized)) { //Changed instance sTaTe to state
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.userInterface = userInterface;
 		userInterface.setState(ReturnBookUI.UI_STATE.READY); //Changed method name to verb starting with lowercase and in camelBack
-		sTaTe = ControlState.READY;		
+		state = ControlState.READY;		
 	}
 
 
 	public void getBookScanned(int Book_ID) { //Changed method name to verb starting with lowercase and in camelBack
-		if (!sTaTe.equals(ControlState.READY)) {
+		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
 		book CUR_book = lIbRaRy.Book(Book_ID);
@@ -51,12 +51,12 @@ public class ReturnBookControl {
 			userInterface.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
 		}
 		userInterface.setState(ReturnBookUI.UI_STATE.INSPECTING);
-		sTaTe = ControlState.INSPECTING;		
+		state = ControlState.INSPECTING;		
 	}
 
 
 	public void Scanning_Complete() {
-		if (!sTaTe.equals(ControlState.READY)) {
+		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
 		userInterface.setState(ReturnBookUI.UI_STATE.COMPLETED);		
@@ -64,13 +64,13 @@ public class ReturnBookControl {
 
 
 	public void Discharge_loan(boolean isDamaged) {
-		if (!sTaTe.equals(ControlState.INSPECTING)) {
+		if (!state.equals(ControlState.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
 		lIbRaRy.Discharge_loan(CurrENT_loan, isDamaged);
 		CurrENT_loan = null;
 		userInterface.setState(ReturnBookUI.UI_STATE.READY);
-		sTaTe = ControlState.READY;				
+		state = ControlState.READY;				
 	}
 
 
