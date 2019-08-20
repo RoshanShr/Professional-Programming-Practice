@@ -66,9 +66,9 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 		}
 		PENDING.add(book);
 		for (pendingBook : PENDING) { //Changed variable to pendingBook
-			ui.display(B.toString());
+			ui.display(book.toString());
 		}
-		if (library.Loans_Remaining_For_Member(member) - PENDING.size() == 0) {
+		if (library.loansRemainingForMember(member) - PENDING.size() == 0) { // Changed method to loansRemainingForMember
 			ui.display("Loan limit reached");
 			Complete();
 		}
@@ -80,12 +80,12 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			cancel();
 		}
 		else {
-			borrowbookui.display("\nFinal Borrowing List");
+			ui.display("\nFinal Borrowing List");
 			for (Book book : PENDING) {
-				borrowbookui.display(B.toString());
+				ui.display(book.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			borrowbookui.Set_state(BorrowBookUI.UIState.FINALISING);
+			ui.setState(BorrowBookUI.UIState.FINALISING);
 			state = ControlState.FINALISING;
 		}
 	}
@@ -96,20 +96,20 @@ public class BorrowBookControl { // Changes class name to BorrowBookControl
 			throw new RuntimeException("BorrowbookControl: cannot call commitLoans except in FINALISING state");
 		}	
 		for (Book book : PENDING) {
-			loan LOAN = library.ISSUE_LAON(B, member);
+			Loan loan = library.issueLoan(book, member); //Method to issueLoan
 			COMPLETED.add(LOAN);			
 		}
-		borrowbookui.display("Completed Loan Slip");
-		for (loan LOAN : COMPLETED) {
-			borrowbookui.display(LOAN.toString());
+		ui.display("Completed Loan Slip");
+		for (Loan loan : COMPLETED) {
+			ui.display(loan.toString());
 		}
-		borrowbookui.Set_state(BorrowBookUI.UIState.COMPLETED);
+		ui.setState(BorrowBookUI.UIState.COMPLETED);
 		state = ControlState.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		borrowbookui.Set_state(BorrowBookUI.UIState.CANCELLED);
+		ui.setState(BorrowBookUI.UIState.CANCELLED);
 		state = ControlState.CANCELLED;
 	}
 	
