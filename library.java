@@ -123,15 +123,15 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 
-	public Member Add_mem(String lastName, String firstName, String email, int phoneNo) { //Class name member changed to Member
+	public Member addMem(String lastName, String firstName, String email, int phoneNo) { //Class name member changed to Member and method name must start from lowercase and be in camelBack
 		Member member = new member(lastName, firstName, email, phoneNo, nextMid());
 		MEMBERS.put(member.getID(), member);	//method GET_ID changed to getID	
 		return member;
 	}
 
 	
-	public book addBook(String a, String t, String c) {	//Method name Add_book changed to aadBook	
-		book b = new book(a, t, c, nextBid());
+	public book addBook(String one, String two, String three) {	//Method name Add_book changed to aadBook	
+		book b = new book(one, two, three, nextBid()); //Variable name changed to meaningful name
 		CATALOG.put(b.getId(), b); //Method name must start with lowercase and be in camelBack		
 		return b;
 	}
