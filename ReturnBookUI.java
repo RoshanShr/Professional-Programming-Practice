@@ -23,15 +23,15 @@ public class ReturnBookUI {
 		
 		while (true) {
 			
-			switch (state) { //Chnaged to state
+			switch (state) { //Changed to state
 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
-					CoNtRoL.Scanning_Complete();
+				String book = input("Scan Book (<enter> completes): ");
+				if (book.length() == 0) {
+					control.scanningComplete(); // Changed method to scanningComplete
 				}
 				else {
 					try {
