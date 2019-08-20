@@ -35,32 +35,32 @@ public class Book implements Serializable {	//Fixed the order of class name
 		return sb.toString();
 	}
 
-	public Integer ID() {
+	public Integer id() {	//Change the method name to correct order(id)
 		return ID;
 	}
 
-	public String TITLE() {
+	public String title() {
 		return TITLE;
 	}
 
 
 	
-	public boolean AVAILABLE() {
+	public boolean available() {	//Change the method name to correct order(available)
 		return State == STATE.AVAILABLE;
 	}
 
 	
-	public boolean On_loan() {
+	public boolean onLoan() {	//Change the method name to correct order(onLoan)
 		return State == STATE.ON_LOAN;
 	}
 
 	
-	public boolean IS_Damaged() {
+	public boolean isDamaged() {	//Change the method name to correct order(isDamaged)
 		return State == STATE.DAMAGED;
 	}
 
 	
-	public void Borrow() {
+	public void borrow() {	//Change the method name to correct order(borrow)
 		if (State.equals(STATE.AVAILABLE)) {
 			State = STATE.ON_LOAN;
 		}
@@ -71,7 +71,7 @@ public class Book implements Serializable {	//Fixed the order of class name
 	}
 
 
-	public void Return(boolean DAMAGED) {
+	public void return(boolean DAMAGED) {	//Change the method name to correct order(return)
 		if (State.equals(STATE.ON_LOAN)) {
 			if (DAMAGED) {
 				State = STATE.DAMAGED;
@@ -86,7 +86,7 @@ public class Book implements Serializable {	//Fixed the order of class name
 	}
 
 	
-	public void Repair() {
+	public void repair() {	//Change the method name to correct order(repair)
 		if (State.equals(STATE.DAMAGED)) {
 			State = STATE.AVAILABLE;
 		}
