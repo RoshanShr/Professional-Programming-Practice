@@ -3,42 +3,42 @@ import java.util.Scanner;
 
 public class FixBookUI {
 
-	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };	//Changed the enum variable name (UiState)
+	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };	//Changed the enum variable name to correct order (UiState)
 
-	private FixBookControl CoNtRoL;
+	private FixBookControl control;	//Changed the instance name to right order(control)
 	private Scanner input;
-	private UiState StAtE;
+	private UiState state;	//Changed the instance name to right order(state)
 
 	
 	public FixBookUI(FixBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control;
 		input = new Scanner(System.in);
-		StAtE = UiState.INITIALISED;
-		control.Set_Ui(this);
+		state = UiState.INITIALISED;
+		control.setUi(this);	//Changed the method name to right order(setUi)
 	}
 
 
-	public void setState(UiState state) {	//Changed the enum variable name (setState)
-		this.StAtE = state;
+	public void setState(UiState state) {	//Changed the method name to right order(setState)
+		this.state = state;
 	}
 
 	
-	public void run() {	//Changed the enum variable name (run)
+	public void run() {	//Changed the method name to right order(run)
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (state) {
 			
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
-					CoNtRoL.SCannING_COMplete();
+				String bookDetails = input("Scan Book (<enter> completes): ");	//Changed the variable name to right order(bookDetails)
+				if (bookDetails.length() == 0) {
+					control.scanningComplete();	//Changed the method name to right format(scanningComplete)
 				}
 				else {
 					try {
-						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_ID);
+						int bookId = Integer.valueOf(bookDetails).intValue();	//Changed the variable name to right order(bookId)
+						control.bookScanned(bookId);	//Changed the method name to right format(bookScanned)
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -47,12 +47,12 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
-				String AnS = input("Fix Book? (Y/N) : ");
-				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) {
-					FiX = true;
+				String confirmationMessage = input("Fix Book? (Y/N) : "); //Changed the variable name to meaningful(confirmationMessage)
+				boolean fix = false; //Changed the variable name to right format(fix)
+				if (confirmationMessage.toUpperCase().equals("Y")) {
+					fix = true;
 				}
-				CoNtRoL.FIX_Book(FiX);
+				control.fixBook(fix); //Changed the method name to right format(fixBook)
 				break;
 								
 			case COMPLETED:
@@ -61,7 +61,7 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
 		}
