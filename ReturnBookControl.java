@@ -5,22 +5,23 @@ public class ReturnBookControl {
 	private ControlState state;
 	
 	private Library library; // Changed variable to library
-	private Loan currentLoan;
+	private Loan currentLoan; // Changed variable to currentLoan
 	
 
 	public ReturnBookControl() {
-		this.lIbRaRy = lIbRaRy.INSTANCE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+		this.library = library.getInstance(); // Change method to getInstance
+		state = ControlState.INITIALISED;
 	}
 	
 	
-	public void Set_UI(ReturnBookUI ui) {
-		if (!sTaTe.equals(CONTROL_STATE.INITIALISED)) {
+	public void setUI(ReturnBookUI ui) {
+		if (!state.equals(ControlState.INITIALISED)) {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.Ui = ui;
-		ui.Set_State(ReturnBookUI.UI_STATE.READY);
-		sTaTe = CONTROL_STATE.READY;		
+		this.ui = ui;
+		ui.setState(ReturnBookUI.UIState.READY); //Change method to setState
+		
+		state = ControlState.READY;		
 	}
 
 
