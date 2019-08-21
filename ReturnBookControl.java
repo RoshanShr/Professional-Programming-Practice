@@ -10,7 +10,7 @@ public class ReturnBookControl {
 
 	public ReturnBookControl() {
 		this.library = library.getInstance(); //Variable name should start with lowercase and be in camelBack and Changed method name to verb starting with lowercase and in camelBack
-		state = ControlState.INITIALISED; //Variable name should start with lowercase and be in camelBack 
+		state = ControlState.INITIALISED; //Variable name should start with lowercase
 	}
 	
 	
