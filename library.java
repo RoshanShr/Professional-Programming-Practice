@@ -217,10 +217,10 @@ public class Library implements Serializable { //Class name must start with capi
 		book.Return(isDamaged);
 		if (isDamaged) {
 			member.addFine(damageFee);
-			damagedBooks.put(book.ID(), book); //Method name must start with lowercase and be in camelBack	
+			damagedBooks.put(book.getId(), book); //Method name must start with lowercase and be in camelBack	
 		}
 		currentLoan.getDischarge(); //Method name must start with lowercase and be in camelBack	
-		CURRENT_LOANS.remove(book.ID());
+		CURRENT_LOANS.remove(book.getId()); //Method name must start with lowercase and be in camelBack
 	}
 
 
@@ -232,9 +232,9 @@ public class Library implements Serializable { //Class name must start with capi
 
 
 	public void repairBook(book currentBook) {
-		if (DAMAGED_BOOKS.containsKey(currentBook.ID())) {
+		if (DAMAGED_BOOKS.containsKey(currentBook.getId())) { //Method name must start with lowercase and be in camelBack
 			currentBook.Repair();
-			DAMAGED_BOOKS.remove(currentBook.ID());
+			DAMAGED_BOOKS.remove(currentBook.getId()); //Method name must start with lowercase and be in camelBack
 		}
 		else {
 			throw new RuntimeException("Library: repairBook: book is not damaged");
