@@ -23,7 +23,7 @@ public class Library implements Serializable { //Class name must start with capi
 	private static final double MAX_FINES_OWED = 1.0; //Constants must be all upper case and underscore separated
 	private static final double DAMAGE_FREE = 2.0; //Constants must be all upper case and underscore separated
 	
-	private static library SeLf;
+	private static Library self; //Changed the class library to Library and instance SeLf to self
 	private int bookId; //Variable name must start with lower case and be in camelBack.
 	private int memberId; //Variable name must start with lower case and be in camelBack.
 	private int loanId; //Variable name must start with lower case and be in camelBack.
@@ -48,31 +48,31 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public static synchronized library getInstance() {	//Method name should be a verb and start with lowercase and be in camelback	
-		if (SeLf == null) {
+	public static synchronized Library getInstance() {	//Method name should be a verb and start with lowercase and be in camelback	
+		if (self == null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
-				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
+				try (ObjectInputStream lif = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
-					SeLf = (library) LiF.readObject();
-					Calendar.getInstance().setDate(SeLf.LOAN_DATE); //Method name should be a verb and start with lowercase and be in camelback
-					LiF.close();
+					self = (Library) lif.readObject(); //Changed object LiF to lif
+					Calendar.getInstance().setDate(self.loanDate); //Method name should be a verb and start with lowercase and be in camelback
+					lif.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new library();
+			else self = new Library();
 		}
-		return SeLf;
+		return self;
 	}
 
 	
 	public static synchronized void isSave() { //Method name should be a verb and start with lowercase and be in camelback
-		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.getInstance().Date();
+		if (self != null) {
+			self.loanDate = Calendar.getInstance().Date(); //Variable name LOAN_DATE changed to loanDate
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
-				LoF.writeObject(SeLf);
+				LoF.writeObject(self);
 				LoF.flush();
 				LoF.close();	
 			}
@@ -83,61 +83,61 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public int BookID() {
+	public int bookId() { //Method name changed to lowercase and camelBack.
 		return bookId; //Variable name must be in lowercase and camelBack 
 	}
 	
 	
-	public int MemberID() {
+	public int memberId() { //Method name changed to lowercase and camelBack.
 		return memberId; //Variable name must be in lowercase and camelBack
 	}
 	
 	
-	private int NextBID() {
+	private int nextBid() { //Method name changed to lowercase and camelBack.
 		return bookId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
-	private int NextMID() {
+	private int nextMid() { //Method name changed to lowercase and camelBack.
 		return memberId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
-	private int NextLID() {
+	private int nextLid() { //Method name changed to lowercase and camelBack.
 		return loanId++; //Variable name must be in lowercase and camelBack
 	}
 
 	
 	public List<member> MEMBERS() {		
-		return new ArrayList<member>(MEMBERS.values()); 
+		return new ArrayList<member>(MEMBERS.getValues()); //Method name must be a verb
 	}
 
 
 	public List<book> BOOKS() {		
-		return new ArrayList<book>(CATALOG.values()); 
+		return new ArrayList<book>(CATALOG.getValues()); //Method name must be a verb
 	}
 
 
 	public List<loan> CurrentLoans() {
-		return new ArrayList<loan>(CURRENT_LOANS.values());
+		return new ArrayList<loan>(CURRENT_LOANS.getValues()); //Method name must be a verb
 	}
 
 
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
-		member member = new member(lastName, firstName, email, phoneNo, NextMID());
-		MEMBERS.put(member.GeT_ID(), member);		
+	public Member addMem(String lastName, String firstName, String email, int phoneNo) { //Class name member changed to Member and method name must start from lowercase and be in camelBack
+		Member member = new member(lastName, firstName, email, phoneNo, nextMid());
+		MEMBERS.put(member.getID(), member);	//method GET_ID changed to getID	
 		return member;
 	}
 
 	
-	public book Add_book(String a, String t, String c) {		
-		book b = new book(a, t, c, NextBID());
-		CATALOG.put(b.ID(), b);		
+	public book addBook(String one, String two, String three) {	//Method name Add_book changed to aadBook	
+		book b = new book(one, two, three, nextBid()); //Variable name changed to meaningful name
+		CATALOG.put(b.getId(), b); //Method name must start with lowercase and be in camelBack		
 		return b;
 	}
 
 	
-	public member MEMBER(int memberId) {
+	public Member MEMBER(int memberId) {
 		if (MEMBERS.containsKey(memberId)) 
 			return MEMBERS.get(memberId);
 		return null;
@@ -151,38 +151,38 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public int LOAN_LIMIT() {
+	public int loanLimit() { //Method name must start with lowercase and be in camelBack	
 		return loanLimit;
 	}
 
 	
-	public boolean MEMBER_CAN_BORROW(member member) {		
+	public boolean MEMBER_CAN_BORROW(Member member) {		
 		if (member.Number_Of_Current_Loans() == loanLimit ) 
 			return false;
 				
-		if (member.Fines_OwEd() >= maxFinesOwed) 
+		if (member.finesOwed() >= maxFinesOwed)  //Method name must start with lowercase and be in camelBack	
 			return false;
 				
-		for (loan loan : member.GeT_LoAnS()) 
-			if (loan.OVer_Due()) 
+		for (Loan loan : Member.getLoans()) //Method name must start with lowercase and be in camelBack	
+			if (loan.overDue()) //Method name must start with lowercase and be in camelBack	
 				return false;
 			
 		return true;
 	}
 
 	
-	public int Loans_Remaining_For_Member(member member) {		
-		return loanLimit - member.Number_Of_Current_Loans();
+	public int loansRemainingForMember(Member member) { //Method name must start with lowercase and be in camelBack			
+		return loanLimit - member.numberOfCurrentLoans(); //Method name must start with lowercase and be in camelBack	
 	}
 
 	
-	public loan ISSUE_LAON(book book, member member) {
-		Date dueDate = Calendar.getInstance().Due_Date(loanPeriod);
-		loan loan = new loan(NextLID(), book, member, dueDate);
-		member.Take_Out_Loan(loan);
+	public loan issueLoan(Book book, Member member) { //Method name must start with lowercase and be in camelBack	
+		Date dueDate = Calendar.getInstance().dueDate(loanPeriod); //Method name must start with lowercase and be in camelBack	
+		loan loan = new loan(nextLid(), book, member, dueDate);
+		member.takeOutLoan(loan); //Method name must start with lowercase and be in camelBack	
 		book.Borrow();
-		LOANS.put(loan.ID(), loan);
-		CURRENT_LOANS.put(book.ID(), loan);
+		LOANS.put(loan.getId(), loan); //Method name must start with lowercase and be in camelBack	
+		CURRENT_LOANS.put(book.getId(), loan); //Method name must start with lowercase and be in camelBack	
 		return loan;
 	}
 	
@@ -195,9 +195,10 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 	
-	public double CalculateOverDueFine(loan loan) {
-		if (loan.OVer_Due()) {
-			long daysOverDue = Calendar.getInstance().Get_Days_Difference(loan.Get_Due_Date());
+	public double calculateOverDueFine(loan loan) { //Method name must start with lowercase and be in camelBack	
+		if (loan.overDue()) { //Method name must start with lowercase and be in camelBack	
+			long daysOverDue = Calendar.getInstance().getDaysDifference(loan.getDueDate()); //Method name must start with lowercase and be in camelBack	
+			long daysOverDue = Calendar.getInstance().getDifference(loan.getDueDate()); //Method name must start with lowercase and be in camelBack	
 			double fine = daysOverDue * finePerDay;
 			return fine;
 		}
@@ -205,21 +206,21 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 
-	public void Discharge_loan(loan currentLoan, boolean isDamaged) {
-		member member = currentLoan.Member();
+	public void dischargeLoan(loan currentLoan, boolean isDamaged) { //Method name must start with lowercase and be in camelBack	
+		Member member = currentLoan.member();
 		book book  = currentLoan.Book();
 		
 		double overDueFine = CalculateOverDueFine(currentLoan);
 		member.Add_Fine(overDueFine);	
 		
-		member.dIsChArGeLoAn(currentLoan);
+		member.disChargeLoan(currentLoan); //Method name must start with lowercase and be in camelBack	
 		book.Return(isDamaged);
 		if (isDamaged) {
-			member.Add_Fine(damageFee);
-			DAMAGED_BOOKS.put(book.ID(), book);
+			member.addFine(damageFee);
+			damagedBooks.put(book.getId(), book); //Method name must start with lowercase and be in camelBack	
 		}
-		currentLoan.DiScHaRgE();
-		CURRENT_LOANS.remove(book.ID());
+		currentLoan.getDischarge(); //Method name must start with lowercase and be in camelBack	
+		CURRENT_LOANS.remove(book.getId()); //Method name must start with lowercase and be in camelBack
 	}
 
 
@@ -230,10 +231,10 @@ public class Library implements Serializable { //Class name must start with capi
 	}
 
 
-	public void Repair_BOOK(book currentBook) {
-		if (DAMAGED_BOOKS.containsKey(currentBook.ID())) {
+	public void repairBook(book currentBook) {
+		if (DAMAGED_BOOKS.containsKey(currentBook.getId())) { //Method name must start with lowercase and be in camelBack
 			currentBook.Repair();
-			DAMAGED_BOOKS.remove(currentBook.ID());
+			DAMAGED_BOOKS.remove(currentBook.getId()); //Method name must start with lowercase and be in camelBack
 		}
 		else {
 			throw new RuntimeException("Library: repairBook: book is not damaged");
